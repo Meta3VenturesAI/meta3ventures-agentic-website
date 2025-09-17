@@ -1,0 +1,142 @@
+{
+  "build": {
+    "status": "FAIL",
+    "command": "npm run build",
+    "output_excerpt": "Build failed in 3.54s\nerror during build:\n[vite-plugin-pwa:build] [plugin vite-plugin-pwa:build] src/components/VentureLaunchBuilder.tsx (9:0): There was an error during the build:\nTransform failed with 1 error:\n/Users/lironlanger/Desktop/meta3ventures-agentic-website/project/src/components/VentureLaunchBuilder.tsx:9:0: ERROR: Unexpected \"<<\"",
+    "root_cause": "Merge conflict markers in source files"
+  },
+  "typecheck": {
+    "status": "FAIL",
+    "tool": "tsc",
+    "command": "tsc --noEmit -p tsconfig.json",
+    "errors": 15,
+    "output_excerpt": "src/components/LoginForm.tsx(13,1): error TS1185: Merge conflict marker encountered.\nsrc/components/VentureLaunchBuilder.tsx(9,1): error TS1185: Merge conflict marker encountered.\nsrc/test/setup.ts(45,1): error TS1185: Merge conflict marker encountered.",
+    "affected_files": [
+      "src/components/LoginForm.tsx",
+      "src/components/VentureLaunchBuilder.tsx", 
+      "src/test/setup.ts"
+    ]
+  },
+  "lint": {
+    "status": "PARTIAL_PASS",
+    "tool": "eslint",
+    "command": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 600",
+    "errors": 2,
+    "warnings": 515,
+    "output_excerpt": "✖ 517 problems (2 errors, 515 warnings)",
+    "error_files": [
+      "src/components/LoginForm.tsx",
+      "src/components/VentureLaunchBuilder.tsx"
+    ],
+    "common_warnings": [
+      "no-unused-vars",
+      "@typescript-eslint/no-explicit-any",
+      "react-hooks/exhaustive-deps"
+    ]
+  },
+  "tests": {
+    "status": "FAIL",
+    "framework": "vitest",
+    "command": "vitest run --config vitest.config.ts --coverage",
+    "passed": 0,
+    "failed": 9,
+    "skipped": 0,
+    "output_excerpt": "Failed Suites 9\nError: Transform failed with 1 error:\n/Users/lironlanger/Desktop/meta3ventures-agentic-website/project/src/test/setup.ts:45:0: ERROR: Unexpected \"<<\"",
+    "failed_suites": [
+      "src/llm/ollama.test.ts",
+      "src/test/llm-integration.test.ts",
+      "src/test/security-integration.test.ts",
+      "src/test/security-validation.test.ts",
+      "src/tests/ai-advisors.test.tsx",
+      "src/tests/auth.test.ts",
+      "src/components/__tests__/BlogSearch.test.tsx",
+      "src/utils/__tests__/a11y.test.ts",
+      "src/utils/__tests__/helpers.test.ts"
+    ],
+    "coverage": {
+      "status": "UNMEASURABLE",
+      "reason": "Tests failed to run due to merge conflicts"
+    }
+  },
+  "security": {
+    "status": "MODERATE_RISK",
+    "tools": ["npm audit"],
+    "high": 0,
+    "moderate": 3,
+    "low": 0,
+    "critical": 0,
+    "vulnerabilities": [
+      {
+        "name": "esbuild",
+        "severity": "moderate",
+        "cve": "CVE-2024-346",
+        "cvss": 5.3,
+        "description": "esbuild enables any website to send any requests to the development server and read the response",
+        "via": "vite"
+      },
+      {
+        "name": "vite",
+        "severity": "moderate", 
+        "description": "Development server request vulnerability via esbuild dependency",
+        "via": "esbuild"
+      },
+      {
+        "name": "vite-plugin-pwa",
+        "severity": "moderate",
+        "description": "Dependency vulnerability via vite",
+        "via": "vite"
+      }
+    ],
+    "fix_available": true,
+    "fix_command": "npm audit fix --force"
+  },
+  "licenses": {
+    "status": "UNVERIFIED",
+    "high_risk": 0,
+    "note": "License checking not performed during audit"
+  },
+  "bundle_size": {
+    "status": "UNVERIFIED",
+    "tool": "vite-bundle-analyzer",
+    "note": "Bundle analysis available via 'npm run build:analyze' but not executed due to build failures",
+    "configuration": "Available in vite.config.ts with rollup-plugin-visualizer"
+  },
+  "docker": {
+    "status": "N/A",
+    "hadolint_errors": 0,
+    "note": "No Dockerfile found in repository"
+  },
+  "ci": {
+    "status": "MINIMAL",
+    "provider": "manual",
+    "workflows": [],
+    "note": "No GitHub Actions or automated CI/CD detected. Manual scripts only.",
+    "deployment": {
+      "netlify": "configured",
+      "vercel": "configured", 
+      "manual": "npm scripts available"
+    }
+  },
+  "code_quality": {
+    "typescript_strict": true,
+    "eslint_config": "comprehensive",
+    "prettier": "not_configured",
+    "husky": "not_configured",
+    "commitlint": "not_configured"
+  },
+  "dependencies": {
+    "total": 884,
+    "production": 617,
+    "development": 222,
+    "optional": 72,
+    "peer": 7,
+    "outdated": "not_checked"
+  },
+  "performance": {
+    "bundle_optimization": "configured",
+    "code_splitting": "manual_chunks",
+    "tree_shaking": "enabled",
+    "minification": "terser",
+    "pwa": "configured"
+  }
+}

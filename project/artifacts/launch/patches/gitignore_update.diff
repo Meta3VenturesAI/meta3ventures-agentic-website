@@ -1,0 +1,12 @@
+diff --git a/project/.gitignore b/project/.gitignore
+index 7ceb59f..3f7ff85 100644
+--- a/project/.gitignore
++++ b/project/.gitignore
+@@ -23,3 +23,7 @@ dist-ssr
+ *.sln
+ *.sw?
+ .env
++.env
++.env.local
++.env.production
++.env.*

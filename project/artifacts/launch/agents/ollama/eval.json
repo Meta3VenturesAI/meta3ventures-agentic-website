@@ -1,0 +1,9 @@
+
+> meta3ventures@1.0.0 agent:eval
+> node scripts/agent-eval.mjs
+
+Ollama provider not available: Cannot find module '/Users/lironlanger/Desktop/my-commercial-app/project/src/llm/ollama.js' imported from /Users/lironlanger/Desktop/my-commercial-app/project/scripts/agent-eval.mjs
+vLLM provider not available: Cannot find module '/Users/lironlanger/Desktop/my-commercial-app/project/src/llm/vllm.js' imported from /Users/lironlanger/Desktop/my-commercial-app/project/scripts/agent-eval.mjs
+🚀 Initializing Agent Evaluator with ollama backend
+❌ Failed to initialize provider ollama: Provider not available for backend: ollama
+💥 Evaluation failed: Provider not available for backend: ollama

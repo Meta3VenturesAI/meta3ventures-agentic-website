@@ -1,0 +1,15 @@
+file:///Users/lironlanger/Desktop/my-commercial-app/project/node_modules/vitest/dist/chunks/cac.Cb-PYCCB.js:404
+          throw new CACError(`Unknown option \`${name.length > 1 ? `--${name}` : `-${name}`}\``);
+                ^
+
+CACError: Unknown option `--list`
+    at Command.checkUnknownOptions (file:///Users/lironlanger/Desktop/my-commercial-app/project/node_modules/vitest/dist/chunks/cac.Cb-PYCCB.js:404:17)
+    at CAC.runMatchedCommand (file:///Users/lironlanger/Desktop/my-commercial-app/project/node_modules/vitest/dist/chunks/cac.Cb-PYCCB.js:604:13)
+    at CAC.parse (file:///Users/lironlanger/Desktop/my-commercial-app/project/node_modules/vitest/dist/chunks/cac.Cb-PYCCB.js:545:12)
+    at file:///Users/lironlanger/Desktop/my-commercial-app/project/node_modules/vitest/dist/cli.js:27:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+
+Node.js v18.20.6

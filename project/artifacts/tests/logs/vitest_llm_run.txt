@@ -1,0 +1,50 @@
+
+ RUN  v3.2.4 /Users/lironlanger/Desktop/my-commercial-app/project
+
+ × tests/llm/vllm.spec.ts > VLLMProvider > completes via OpenAI-compatible API 11ms
+   → [vllm.generate] fetch failed
+ ✓ tests/llm/vllm.spec.ts > VLLMProvider > handles 500 with LLMError 1ms
+ × tests/llm/ollama.spec.ts > OllamaProvider > generates completion (happy path) 11ms
+   → [ollama.generate] fetch failed
+ ✓ tests/llm/ollama.spec.ts > OllamaProvider > handles 500 with LLMError 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/llm/ollama.spec.ts > OllamaProvider > generates completion (happy path)
+LLMError: [ollama.generate] fetch failed
+ ❯ OllamaProvider.handleError src/llm/ollama.ts:182:12
+    180|     }
+    181| 
+    182|     return new LLMError(
+       |            ^
+    183|       error.message || 'Unknown error occurred',
+    184|       'UNKNOWN_ERROR',
+ ❯ OllamaProvider.chat src/llm/ollama.ts:61:18
+ ❯ tests/llm/ollama.spec.ts:36:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'UNKNOWN_ERROR', statusCode: 500, provider: 'Ollama' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/llm/vllm.spec.ts > VLLMProvider > completes via OpenAI-compatible API
+LLMError: [vllm.generate] fetch failed
+ ❯ VLLMProvider.handleError src/llm/vllm.ts:190:12
+    188|     }
+    189| 
+    190|     return new LLMError(
+       |            ^
+    191|       error.message || 'Unknown error occurred',
+    192|       'UNKNOWN_ERROR',
+ ❯ VLLMProvider.chat src/llm/vllm.ts:64:18
+ ❯ tests/llm/vllm.spec.ts:43:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'UNKNOWN_ERROR', statusCode: 500, provider: 'vLLM' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 2 passed (4)
+   Start at  19:02:25
+   Duration  346ms (transform 82ms, setup 113ms, collect 100ms, tests 25ms, environment 0ms, prepare 74ms)
+

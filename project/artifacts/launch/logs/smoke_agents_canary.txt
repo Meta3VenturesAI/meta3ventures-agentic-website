@@ -1,0 +1,9 @@
+
+> meta3ventures@1.0.0 smoke:agents
+> tsx scripts/agent-smoke.ts
+
+🧪 Running agent smoke test...
+📊 Smoke test results:
+  ❌ ollama: blocked
+  ❌ vllm: blocked
+⚠️ Agent smoke test blocked (no providers available)

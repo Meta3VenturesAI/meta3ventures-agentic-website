@@ -1,0 +1,194 @@
+/**
+ * Ollama LLM Provider
+ * Implements the LLMProvider interface for Ollama local models
+ */
+
+import type {
+  LLMProvider,
+  LLMProviderConfig,
+  LLMChatRequest,
+  LLMChatResponse,
+  LLMMessage,
+  LLMUsage,
+  LLMToolCall,
+  LLMError,
+  LLMTimeoutError
+} from './provider.js';
+
+export class OllamaProvider implements LLMProvider {
+  private config: LLMProviderConfig;
+  private baseUrl: string;
+
+  constructor(config: LLMProviderConfig) {
+    this.config = {
+      timeout: 30000,
+      maxRetries: 3,
+      ...config
+    };
+    this.baseUrl = config.baseUrl.replace(/\/$/, '');
+  }
+
+  async chat(request: LLMChatRequest): Promise<LLMChatResponse> {
+    const { messages, system, tools, seed, temperature = 0.7, max_tokens = 4096, stream = false } = request;
+    
+    // Prepare messages for Ollama format
+    const ollamaMessages = this.prepareMessages(messages, system);
+    
+    const payload = {
+      model: this.config.model,
+      messages: ollamaMessages,
+      stream: false, // Always false for now, streaming can be added later
+      options: {
+        temperature,
+        num_predict: max_tokens,
+        seed: seed || undefined,
+        ...(tools && { tools: this.prepareTools(tools) })
+      }
+    };
+
+    try {
+      const response = await this.makeRequest('/api/chat', payload);
+      
+      return {
+        text: response.message?.content || '',
+        usage: this.parseUsage(response),
+        tool_calls: this.parseToolCalls(response.message?.tool_calls),
+        finish_reason: this.parseFinishReason(response)
+      };
+    } catch (error) {
+      throw this.handleError(error);
+    }
+  }
+
+  async healthCheck(): Promise<boolean> {
+    try {
+      const response = await this.makeRequest('/api/tags', {});
+      return Array.isArray(response.models) && response.models.length > 0;
+    } catch (error) {
+      console.warn('Ollama health check failed:', error);
+      return false;
+    }
+  }
+
+  getInfo() {
+    return {
+      name: 'Ollama',
+      version: '1.0.0',
+      capabilities: ['chat', 'tools', 'streaming', 'local']
+    };
+  }
+
+  private prepareMessages(messages: LLMMessage[], system?: string): LLMMessage[] {
+    const preparedMessages = [...messages];
+    
+    if (system) {
+      preparedMessages.unshift({
+        role: 'system',
+        content: system
+      });
+    }
+    
+    return preparedMessages;
+  }
+
+  private prepareTools(tools: any[]): any[] {
+    // Convert our tool format to Ollama format
+    return tools.map(tool => ({
+      type: tool.type,
+      function: {
+        name: tool.function.name,
+        description: tool.function.description,
+        parameters: tool.function.parameters
+      }
+    }));
+  }
+
+  private parseUsage(response: any): LLMUsage | undefined {
+    if (!response.prompt_eval_count && !response.eval_count) {
+      return undefined;
+    }
+
+    return {
+      prompt_tokens: response.prompt_eval_count || 0,
+      completion_tokens: response.eval_count || 0,
+      total_tokens: (response.prompt_eval_count || 0) + (response.eval_count || 0)
+    };
+  }
+
+  private parseToolCalls(toolCalls: any[]): LLMToolCall[] | undefined {
+    if (!toolCalls || toolCalls.length === 0) {
+      return undefined;
+    }
+
+    return toolCalls.map((call, index) => ({
+      id: `call_${index}`,
+      type: 'function',
+      function: {
+        name: call.function?.name || '',
+        arguments: JSON.stringify(call.function?.arguments || {})
+      }
+    }));
+  }
+
+  private parseFinishReason(response: any): 'stop' | 'tool_calls' | 'length' | 'content_filter' {
+    if (response.message?.tool_calls?.length > 0) {
+      return 'tool_calls';
+    }
+    if (response.eval_count >= (response.num_predict || 4096)) {
+      return 'length';
+    }
+    return 'stop';
+  }
+
+  private async makeRequest(endpoint: string, payload: any): Promise<any> {
+    const url = `${this.baseUrl}${endpoint}`;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), this.config.timeout);
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(this.config.apiKey && { 'Authorization': `Bearer ${this.config.apiKey}` })
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      return await response.json();
+    } catch (e) {
+      clearTimeout(timeoutId);
+      handleLLMError('ollama.generate', e);
+    }  }
+
+  private handleError(error: any): LLMError {
+    if (error instanceof LLMError) {
+      return error;
+    }
+
+    if (error.name === 'AbortError') {
+      return new LLMTimeoutError('Ollama', this.config.timeout!);
+    }
+
+    return new LLMError(
+      error.message || 'Unknown error occurred',
+      'UNKNOWN_ERROR',
+      error.status || 500,
+      'Ollama'
+    );
+  }
+}
+
+/**
+ * Create an Ollama provider instance
+ */
+export function createOllamaProvider(config: LLMProviderConfig): OllamaProvider {
+  return new OllamaProvider(config);
+}

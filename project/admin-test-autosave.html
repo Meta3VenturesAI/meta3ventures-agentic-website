@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Save Draft Recovery Test</title>
+</head>
+<body>
+    <h1>Testing Auto-Save Draft Recovery</h1>
+    <button onclick="simulateDraft()">Simulate Saved Draft</button>
+    <button onclick="checkDraft()">Check for Draft</button>
+    <pre id="output"></pre>
+
+    <script>
+        const FORM_ID = 'multi-step-application';
+        
+        function simulateDraft() {
+            const testData = {
+                formData: {
+                    companyName: "Test Company Inc",
+                    industry: "Technology",
+                    companyDescription: "This is a test company description for validating auto-save functionality.",
+                    location: "San Francisco, CA",
+                    website: "https://testcompany.com",
+                    companyStage: "seed"
+                },
+                currentStep: 2,
+                completionPercentage: 31,
+                lastSaved: new Date("2025-09-04T18:25:12").toISOString()
+            };
+            
+            localStorage.setItem(`draft-${FORM_ID}`, JSON.stringify(testData));
+            document.getElementById('output').textContent = 'Draft saved with timestamp: 9/4/2025, 6:25:12 PM (31% complete)';
+        }
+        
+        function checkDraft() {
+            const saved = localStorage.getItem(`draft-${FORM_ID}`);
+            if (saved) {
+                const data = JSON.parse(saved);
+                const lastSaved = new Date(data.lastSaved);
+                const formatted = lastSaved.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                const message = `You have an unsaved draft from ${formatted} (${data.completionPercentage}% complete). Would you like to continue where you left off?`;
+                
+                document.getElementById('output').textContent = message;
+                
+                if (confirm(message)) {
+                    alert('Draft would be restored with data:\n' + JSON.stringify(data.formData, null, 2));
+                }
+            } else {
+                document.getElementById('output').textContent = 'No draft found';
+            }
+        }
+    </script>
+</body>
+</html>

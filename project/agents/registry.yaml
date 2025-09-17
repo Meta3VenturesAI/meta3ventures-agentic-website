@@ -1,0 +1,209 @@
+# Agent Registry Configuration
+# Defines available agents, their tools, and model backends
+
+agents:
+  meta3-primary:
+    name: "Meta3 Primary Agent"
+    description: "Main conversational agent for Meta3Ventures platform"
+    model_backend: "ollama"
+    model_name: "llama3.1:8b-instruct"
+    fallback_backend: "vllm"
+    fallback_model: "mistral-7b-instruct"
+    capabilities:
+      - "general_conversation"
+      - "business_consulting"
+      - "startup_advice"
+      - "investment_guidance"
+    tools:
+      - "web_search"
+      - "document_analysis"
+      - "market_research"
+    safety:
+      max_tokens: 4096
+      temperature: 0.7
+      timeout: 30000
+      max_retries: 3
+    prompts:
+      system: "prompts/meta3-primary/system.md"
+      examples: "prompts/meta3-primary/examples.md"
+
+  meta3-research:
+    name: "Meta3 Research Agent"
+    description: "Specialized agent for market research and analysis"
+    model_backend: "ollama"
+    model_name: "llama3.1:8b-instruct"
+    fallback_backend: "vllm"
+    fallback_model: "mistral-7b-instruct"
+    capabilities:
+      - "market_analysis"
+      - "competitive_intelligence"
+      - "trend_analysis"
+      - "data_interpretation"
+    tools:
+      - "web_search"
+      - "data_analysis"
+      - "report_generation"
+    safety:
+      max_tokens: 6144
+      temperature: 0.5
+      timeout: 45000
+      max_retries: 2
+    prompts:
+      system: "prompts/meta3-research/system.md"
+      examples: "prompts/meta3-research/examples.md"
+
+  meta3-investment:
+    name: "Meta3 Investment Agent"
+    description: "Financial and investment advisory agent"
+    model_backend: "ollama"
+    model_name: "llama3.1:8b-instruct"
+    fallback_backend: "vllm"
+    fallback_model: "mistral-7b-instruct"
+    capabilities:
+      - "financial_analysis"
+      - "investment_advice"
+      - "risk_assessment"
+      - "portfolio_optimization"
+    tools:
+      - "financial_calculator"
+      - "market_data"
+      - "risk_analyzer"
+    safety:
+      max_tokens: 4096
+      temperature: 0.3
+      timeout: 30000
+      max_retries: 3
+    prompts:
+      system: "prompts/meta3-investment/system.md"
+      examples: "prompts/meta3-investment/examples.md"
+
+  meta3-legal:
+    name: "Meta3 Legal Agent"
+    description: "Legal advisory and compliance agent"
+    model_backend: "ollama"
+    model_name: "llama3.1:8b-instruct"
+    fallback_backend: "vllm"
+    fallback_model: "mistral-7b-instruct"
+    capabilities:
+      - "legal_advice"
+      - "compliance_checking"
+      - "contract_analysis"
+      - "regulatory_guidance"
+    tools:
+      - "legal_database"
+      - "document_review"
+      - "compliance_checker"
+    safety:
+      max_tokens: 4096
+      temperature: 0.2
+      timeout: 30000
+      max_retries: 3
+    prompts:
+      system: "prompts/meta3-legal/system.md"
+      examples: "prompts/meta3-legal/examples.md"
+
+  meta3-marketing:
+    name: "Meta3 Marketing Agent"
+    description: "Marketing strategy and content creation agent"
+    model_backend: "ollama"
+    model_name: "llama3.1:8b-instruct"
+    fallback_backend: "vllm"
+    fallback_model: "mistral-7b-instruct"
+    capabilities:
+      - "content_creation"
+      - "marketing_strategy"
+      - "brand_guidance"
+      - "social_media"
+    tools:
+      - "content_generator"
+      - "seo_analyzer"
+      - "social_media_tools"
+    safety:
+      max_tokens: 4096
+      temperature: 0.8
+      timeout: 30000
+      max_retries: 3
+    prompts:
+      system: "prompts/meta3-marketing/system.md"
+      examples: "prompts/meta3-marketing/examples.md"
+
+  meta3-support:
+    name: "Meta3 Support Agent"
+    description: "Customer support and technical assistance agent"
+    model_backend: "ollama"
+    model_name: "llama3.1:8b-instruct"
+    fallback_backend: "vllm"
+    fallback_model: "mistral-7b-instruct"
+    capabilities:
+      - "customer_support"
+      - "technical_help"
+      - "troubleshooting"
+      - "faq_answering"
+    tools:
+      - "knowledge_base"
+      - "ticket_system"
+      - "diagnostic_tools"
+    safety:
+      max_tokens: 2048
+      temperature: 0.6
+      timeout: 20000
+      max_retries: 2
+    prompts:
+      system: "prompts/meta3-support/system.md"
+      examples: "prompts/meta3-support/examples.md"
+
+# Model Backend Configuration
+backends:
+  ollama:
+    name: "Ollama Local Models"
+    type: "local"
+    base_url: "http://127.0.0.1:11434"
+    models:
+      - "llama3.1:8b-instruct"
+      - "llama3.1:70b-instruct"
+      - "mistral:7b-instruct"
+      - "qwen2.5:7b-instruct"
+      - "deepseek-coder:6.7b-instruct"
+    capabilities:
+      - "chat"
+      - "tools"
+      - "streaming"
+      - "local_inference"
+    requirements:
+      - "ollama_installed"
+      - "model_pulled"
+      - "service_running"
+
+  vllm:
+    name: "vLLM OpenAI API"
+    type: "local"
+    base_url: "http://127.0.0.1:8000/v1"
+    models:
+      - "mistral-7b-instruct"
+      - "llama-3.1-8b-instruct"
+      - "qwen2.5-7b-instruct"
+      - "deepseek-coder-6.7b-instruct"
+    capabilities:
+      - "chat"
+      - "tools"
+      - "streaming"
+      - "gpu_optimized"
+    requirements:
+      - "vllm_installed"
+      - "gpu_available"
+      - "service_running"
+
+# Global Configuration
+global:
+  default_backend: "ollama"
+  fallback_backend: "vllm"
+  timeout: 30000
+  max_retries: 3
+  rate_limit:
+    requests_per_minute: 60
+    burst_limit: 10
+  safety:
+    max_tokens: 4096
+    temperature_range: [0.1, 1.0]
+    content_filter: true
+    audit_logging: true

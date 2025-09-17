@@ -1,0 +1,147 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18.20.6"
+  NPM_VERSION = "10"
+  NODE_ENV = "production"
+  GENERATE_SOURCEMAP = "false"
+  CI = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ========================================
+# BRANCH-SPECIFIC CONFIGURATIONS
+# ========================================
+
+# Production branch (main)
+[context.production]
+  command = "npm run build:production"
+
+[context.production.environment]
+  VITE_APP_ENV = "production"
+  NODE_ENV = "production"
+
+# Deploy preview branches (staging)
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.deploy-preview.environment]
+  VITE_APP_ENV = "staging"
+  NODE_ENV = "development"
+
+# Branch deploys (development)
+[context.branch-deploy]
+  command = "npm run build"
+
+[context.branch-deploy.environment]
+  VITE_APP_ENV = "development"
+
+# ========================================
+# ADVANCED HEADERS & SECURITY
+# ========================================
+
+# API routes for agent proxy
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization, X-Requested-With"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Static assets caching optimization
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+# Fonts caching
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+# Images caching
+[[headers]]
+  for = "*.{jpg,jpeg,png,gif,webp,svg,ico}"
+  [headers.values]
+    Cache-Control = "public, max-age=86400" # 1 day
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+# ========================================
+# PERFORMANCE & BUILD OPTIMIZATIONS
+# ========================================
+
+# Build processing settings
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# ========================================
+# FUNCTIONS CONFIGURATION
+# ========================================
+
+[functions]
+  directory = "netlify/functions"
+
+# ========================================
+# ADDITIONAL REDIRECTS FOR AGENTS
+# ========================================
+
+# Agent API endpoints
+[[redirects]]
+  from = "/api/agents/*"
+  to = "/.netlify/functions/agent-proxy"
+  status = 200
+  force = true
+
+# Health check endpoint
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/agent-proxy"
+  status = 200
+  force = true

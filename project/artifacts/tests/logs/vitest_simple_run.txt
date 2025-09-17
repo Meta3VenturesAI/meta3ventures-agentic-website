@@ -1,0 +1,11 @@
+
+ RUN  v3.2.4 /Users/lironlanger/Desktop/my-commercial-app/project
+
+ ✓ tests/llm/simple.spec.ts > LLM Providers > should instantiate OllamaProvider 1ms
+ ✓ tests/llm/simple.spec.ts > LLM Providers > should instantiate VLLMProvider 0ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  19:02:34
+   Duration  349ms (transform 48ms, setup 56ms, collect 41ms, tests 1ms, environment 0ms, prepare 33ms)
+

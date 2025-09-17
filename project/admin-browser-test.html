@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meta3Ventures Functionality Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+        .loading { background: #fff3cd; }
+    </style>
+</head>
+<body>
+    <h1>Meta3Ventures Functionality Test</h1>
+    <p>This will test if the new functionality is accessible on meta3ventures.com</p>
+    
+    <div id="tests"></div>
+    
+    <script>
+        const testsDiv = document.getElementById('tests');
+        
+        function addTest(name, status, message) {
+            const div = document.createElement('div');
+            div.className = 'test ' + status;
+            div.innerHTML = `<strong>${name}:</strong> ${message}`;
+            testsDiv.appendChild(div);
+        }
+        
+        // Test 1: Main site
+        addTest('Main Site', 'loading', 'Testing...');
+        fetch('https://meta3ventures.com/')
+            .then(r => addTest('Main Site', 'success', `✅ Status ${r.status} - Site is accessible`))
+            .catch(e => addTest('Main Site', 'error', `❌ Error: ${e.message}`));
+        
+        // Test 2: Agents page
+        addTest('Agents Page', 'loading', 'Testing...');
+        fetch('https://meta3ventures.com/agents')
+            .then(r => addTest('Agents Page', 'success', `✅ Status ${r.status} - Agents page exists`))
+            .catch(e => addTest('Agents Page', 'error', `❌ Error: ${e.message}`));
+        
+        // Test 3: Admin panel
+        addTest('Admin Panel', 'loading', 'Testing...');
+        fetch('https://meta3ventures.com/admin')
+            .then(r => addTest('Admin Panel', 'success', `✅ Status ${r.status} - Admin panel exists`))
+            .catch(e => addTest('Admin Panel', 'error', `❌ Error: ${e.message}`));
+        
+        // Test 4: JavaScript bundle
+        addTest('JS Bundle', 'loading', 'Testing...');
+        fetch('https://meta3ventures.com/assets/index-DuAPTuUi.js')
+            .then(r => addTest('JS Bundle', 'success', `✅ Status ${r.status} - JavaScript bundle loads (${(r.headers.get('content-length')/1024).toFixed(0)}KB)`))
+            .catch(e => addTest('JS Bundle', 'error', `❌ Error: ${e.message}`));
+        
+        setTimeout(() => {
+            addTest('Instructions', 'success', `
+                <br><strong>Next Steps:</strong><br>
+                1. If all tests show ✅, the system is deployed correctly<br>
+                2. Clear your browser cache and try: <a href="https://meta3ventures.com/agents" target="_blank">https://meta3ventures.com/agents</a><br>
+                3. Look for "Virtual Agents" in the main navigation menu<br>
+                4. If still not working, check browser console (F12) for JavaScript errors
+            `);
+        }, 3000);
+    </script>
+</body>
+</html>

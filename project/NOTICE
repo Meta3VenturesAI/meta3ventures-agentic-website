@@ -1,0 +1,22 @@
+Meta3Ventures Commercial Application
+Copyright 2025 Meta3Ventures
+
+This software incorporates open source components and models. 
+For detailed licensing information, see:
+
+- docs/MODEL_LICENSES.md - For AI/ML models and their licenses
+- package.json - For Node.js dependencies and their licenses
+
+Open Source Components:
+- React, Vite, TypeScript, and related frontend tooling
+- Supabase client libraries
+- Various utility libraries (see package.json for complete list)
+
+AI/ML Models:
+- Ollama models (various licenses, see MODEL_LICENSES.md)
+- vLLM compatible models (various licenses, see MODEL_LICENSES.md)
+
+Third-party assets and dependencies are subject to their respective licenses.
+Please review the complete dependency tree and model licenses before use.
+
+For questions about licensing, contact: legal@meta3ventures.com

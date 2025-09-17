@@ -1,0 +1,729 @@
+
+ RUN  v3.2.4 /Users/lironlanger/Desktop/my-commercial-app/project
+
+ ✓ src/llm/ollama.test.ts > OllamaProvider > should be importable 1ms
+ ✓ src/utils/__tests__/a11y.test.ts > Accessibility Features > should have proper focus styles 27ms
+ ✓ src/utils/__tests__/a11y.test.ts > Accessibility Features > should validate alt text requirements 1ms
+ ✓ src/utils/__tests__/a11y.test.ts > Accessibility Features > should validate aria-label requirements 0ms
+ ✓ src/utils/__tests__/a11y.test.ts > Accessibility Features > should validate color contrast ratios 0ms
+ ✓ src/utils/__tests__/a11y.test.ts > Accessibility Features > should validate keyboard navigation 1ms
+ ✓ src/utils/__tests__/a11y.test.ts > Accessibility Features > should validate semantic HTML structure 5ms
+stdout | src/test/security-validation.test.ts
+💻 ℹ️ [SYSTEM] application_start {
+  userAgent: [90mundefined[39m,
+  url: [32m'http://localhost:3000/'[39m,
+  timestamp: [32m'2025-09-14T07:37:12.575Z'[39m
+}
+
+stdout | src/test/security-integration.test.ts
+💻 ℹ️ [SYSTEM] application_start {
+  userAgent: [90mundefined[39m,
+  url: [32m'http://localhost:3000/'[39m,
+  timestamp: [32m'2025-09-14T07:37:12.577Z'[39m
+}
+
+stdout | src/test/llm-integration.test.ts
+💻 ℹ️ [SYSTEM] application_start {
+  userAgent: [90mundefined[39m,
+  url: [32m'http://localhost:3000/'[39m,
+  timestamp: [32m'2025-09-14T07:37:12.577Z'[39m
+}
+
+stdout | src/test/llm-integration.test.ts
+📦 Loaded 0 stored API keys
+
+stdout | src/test/security-integration.test.ts > Security Integration Tests > authentication flow works correctly
+🔐 ℹ️ [AUTH] login_attempt {
+  timestamp: [32m'2025-09-14T07:37:12.598Z'[39m,
+  remaining_attempts: [33m4[39m,
+  clientId: [32m'admin-client-jzi23onjx'[39m
+}
+
+stderr | src/test/security-integration.test.ts > Security Integration Tests > authentication flow works correctly
+🔐 ⚠️ [AUTH] login_failure {
+  reason: [32m'invalid_password'[39m,
+  remaining_attempts: [33m3[39m,
+  clientId: [32m'admin-client-jzi23onjx'[39m
+}
+
+stdout | src/test/security-validation.test.ts > Security Implementation Validation > Authentication System > should reject weak passwords
+🔐 ℹ️ [AUTH] login_attempt {
+  timestamp: [32m'2025-09-14T07:37:12.599Z'[39m,
+  remaining_attempts: [33m4[39m,
+  clientId: [32m'admin-client-af8bogd2d'[39m
+}
+
+stderr | src/test/security-validation.test.ts > Security Implementation Validation > Authentication System > should reject weak passwords
+🔐 ⚠️ [AUTH] login_failure {
+  reason: [32m'invalid_password'[39m,
+  remaining_attempts: [33m3[39m,
+  clientId: [32m'admin-client-af8bogd2d'[39m
+}
+
+stdout | src/test/security-integration.test.ts > Security Integration Tests > session management works correctly
+🔐 ℹ️ [AUTH] logout { userId: [90mundefined[39m, timestamp: [32m'2025-09-14T07:37:12.600Z'[39m }
+
+stderr | src/test/security-validation.test.ts > Security Implementation Validation > Audit Logging System > should log security events properly
+🚨 ⚠️ [SECURITY] TEST_EVENT { test: [32m'data'[39m, timestamp: [32m'2025-09-14T07:37:12.602Z'[39m }
+
+ ✓ src/test/security-integration.test.ts > Security Integration Tests > authentication flow works correctly 1ms
+ ✓ src/test/security-integration.test.ts > Security Integration Tests > rate limiting prevents brute force 0ms
+ ✓ src/test/security-integration.test.ts > Security Integration Tests > session management works correctly 0ms
+ ✓ src/test/security-integration.test.ts > Security Integration Tests > environment variables are secure 0ms
+ ✓ src/test/security-integration.test.ts > Security Integration Tests > configuration is production-ready 0ms
+ ✓ src/test/security-integration.test.ts > Security Validation Checklist > authentication system components exist 0ms
+ ✓ src/test/security-integration.test.ts > Security Validation Checklist > rate limiting system is configured 0ms
+ ✓ src/test/security-integration.test.ts > Security Validation Checklist > security headers should be implemented 0ms
+stderr | src/test/security-validation.test.ts > Security Integration Tests > complete authentication flow
+🔐 ⚠️ [AUTH] login_failure {
+  reason: [32m'invalid_password'[39m,
+  remaining_attempts: [33m3[39m,
+  clientId: [32m'admin-client-d14ejuu5i'[39m
+}
+
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Authentication System > should reject weak passwords 2ms
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Authentication System > should validate password strength requirements 0ms
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Authentication System > should handle session timeout properly 0ms
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Rate Limiting System > should enforce login rate limits 1ms
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Rate Limiting System > should have different rate limits for different operations 0ms
+ × src/test/security-validation.test.ts > Security Implementation Validation > Audit Logging System > should log security events properly 3ms
+   → expected "log" to be called at least once
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Audit Logging System > should categorize events correctly 0ms
+ × src/test/security-validation.test.ts > Security Implementation Validation > Data Security > should not store sensitive data in localStorage 1ms
+   → expected undefined to be false // Object.is equality
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Data Security > should encrypt authentication tokens 0ms
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Input Validation > should sanitize user inputs 0ms
+ ✓ src/test/security-validation.test.ts > Security Implementation Validation > Environment Security > should not expose sensitive environment variables 0ms
+ × src/test/security-validation.test.ts > Security Implementation Validation > Environment Security > should only expose VITE_ prefixed environment variables 1ms
+   → expected 'TEST' to match /^VITE_/
+ ✓ src/test/security-validation.test.ts > Security Integration Tests > complete authentication flow 0ms
+ ✓ src/test/security-validation.test.ts > Security Integration Tests > session management lifecycle 0ms
+ ✓ src/test/security-validation.test.ts > Security Compliance > password requirements meet security standards 0ms
+ ✓ src/test/security-validation.test.ts > Security Compliance > session security configuration 0ms
+ × src/test/security-validation.test.ts > Security Compliance > audit logging requirements 0ms
+   → expected undefined to be defined
+ ✓ src/tests/auth.test.ts > AuthService > Authentication > should successfully authenticate with valid password 1ms
+ ✓ src/tests/auth.test.ts > AuthService > Authentication > should fail authentication with invalid password 0ms
+ ✓ src/tests/auth.test.ts > AuthService > Authentication > should maintain session after successful login 1ms
+ ✓ src/tests/auth.test.ts > AuthService > Authentication > should clear session on logout 1ms
+ × src/tests/auth.test.ts > AuthService > Session Management > should validate active session 7ms
+   → expected false to be true // Object.is equality
+ ✓ src/tests/auth.test.ts > AuthService > Session Management > should invalidate expired session 0ms
+ ✓ src/tests/auth.test.ts > AuthService > Role Management > should correctly identify admin role 0ms
+ × src/tests/auth.test.ts > AuthService > Role Management > should correctly identify non-admin role 1ms
+   → expected true to be false // Object.is equality
+ × src/tests/auth.test.ts > AuthService > Security > should not expose password in stored session 1ms
+   → expected undefined to be defined
+ ✓ src/tests/auth.test.ts > AuthService > Security > should generate unique session tokens 1ms
+ × src/tests/auth.test.ts > AuthService > Security > should log authentication events 0ms
+   → expected 0 to be greater than 0
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > debounce > should debounce function calls 3ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > throttle > should throttle function calls 1ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatDate > should format date correctly 14ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatDate > should handle string dates 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatRelativeTime > should format time as "just now" for recent times 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatRelativeTime > should format time in minutes 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatRelativeTime > should format time in hours 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatRelativeTime > should format time in days 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > truncate > should truncate long text 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > truncate > should not truncate short text 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > slugify > should convert text to slug 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > parseQueryParams > should parse query string 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > parseQueryParams > should handle empty query string 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > buildQueryString > should build query string from object 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > buildQueryString > should handle empty object 1ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > buildQueryString > should skip null and undefined values 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > deepClone > should deep clone objects 1ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > isEmpty > should check if value is empty 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatNumber > should format numbers with commas 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > formatFileSize > should format file sizes 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > isValidEmail > should validate email addresses 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > isValidUrl > should validate URLs 1ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > capitalize > should capitalize first letter 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > camelToTitle > should convert camelCase to Title Case 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > getInitials > should get initials from name 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > groupBy > should group array by key 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > sortBy > should sort array by key 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > unique > should return unique values 0ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > sleep > should wait for specified time 103ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > retry > should retry failed function 32ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > retry > should throw after max attempts 12ms
+ ✓ src/utils/__tests__/helpers.test.ts > Helper Functions > memoize > should memoize function results 0ms
+stdout | src/test/llm-integration.test.ts
+Loaded 11 specialized agents
+🔧 Admin Agent Orchestrator initialized
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should initialize LLM service with providers
+Hugging Face not available: TypeError: Cannot read properties of undefined (reading 'status')
+    at HuggingFaceProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:250:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:40:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should initialize LLM service with providers
+Groq provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at GroqProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:145:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:40:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should initialize LLM service with providers
+DeepSeek provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at DeepSeekProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:756:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:40:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should handle provider availability checking gracefully
+Ollama not available (may need CORS: OLLAMA_ORIGINS=* ollama serve): Error: Network error
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:54:42
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:155:11
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:26
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runTest [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1574:12[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at runSuite [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1729:8[90m)[39m
+    at runSuite [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1729:8[90m)[39m
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should handle provider availability checking gracefully
+Hugging Face not available: TypeError: Cannot read properties of undefined (reading 'status')
+    at HuggingFaceProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:250:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:56:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should handle provider availability checking gracefully
+Groq provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at GroqProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:145:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:56:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should handle provider availability checking gracefully
+DeepSeek provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at DeepSeekProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:756:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:56:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Service Integration > should test provider connections
+Ollama not available (may need CORS: OLLAMA_ORIGINS=* ollama serve): Error: Connection refused
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:65:42
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:155:11
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:26
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runTest [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1574:12[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at runSuite [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1729:8[90m)[39m
+    at runSuite [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1729:8[90m)[39m
+
+stderr | src/test/llm-integration.test.ts > Agent System Integration > should provide LLM providers through orchestrator
+Hugging Face not available: TypeError: Cannot read properties of undefined (reading 'status')
+    at HuggingFaceProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:250:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at AdminAgentOrchestrator.getLLMProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:297:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:98:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > Agent System Integration > should provide LLM providers through orchestrator
+Groq provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at GroqProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:145:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at AdminAgentOrchestrator.getLLMProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:297:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:98:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > Agent System Integration > should provide LLM providers through orchestrator
+DeepSeek provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at DeepSeekProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:756:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.getAvailableProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:901:25[90m)[39m
+    at AdminAgentOrchestrator.getLLMProviders [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:297:25[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:98:23
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stdout | src/test/llm-integration.test.ts > Agent System Integration > should configure agent LLM settings
+💻 ℹ️ [SYSTEM] agent_llm_configured {
+  agentId: [32m'meta3-research'[39m,
+  preferredModel: [32m'llama3.2:3b'[39m,
+  preferredProvider: [32m'ollama'[39m,
+  enableLLM: [33mtrue[39m
+}
+✅ Agent meta3-research configured: {
+  preferredModel: [32m'llama3.2:3b'[39m,
+  preferredProvider: [32m'ollama'[39m,
+  enableLLM: [33mtrue[39m
+}
+
+stderr | src/test/llm-integration.test.ts > Agent System Integration > should handle agent configuration for non-existent agent
+Agent non-existent not found
+
+stdout | src/test/llm-integration.test.ts > Agent LLM Integration > should configure agent LLM preferences
+💻 ℹ️ [SYSTEM] agent_llm_configured {
+  agentId: [32m'meta3-research'[39m,
+  preferredModel: [32m'mixtral-8x7b-32768'[39m,
+  preferredProvider: [32m'groq'[39m,
+  enableLLM: [33mfalse[39m
+}
+
+stdout | src/test/llm-integration.test.ts > Agent LLM Integration > should handle message processing with LLM fallback
+💻 ℹ️ [SYSTEM] agent_llm_configured {
+  agentId: [32m'meta3-research'[39m,
+  preferredModel: [32m'qwen2.5:latest'[39m,
+  preferredProvider: [32m'ollama'[39m,
+  enableLLM: [33mfalse[39m
+}
+🤖 ℹ️ [LLM] llm_request {
+  provider: [32m'disabled'[39m,
+  model: [32m'none'[39m,
+  action: [32m'llm_disabled_fallback'[39m,
+  agentId: [32m'meta3-research'[39m,
+  message: [32m'market analysis...'[39m
+}
+
+stdout | src/test/llm-integration.test.ts > Agent LLM Integration > should process agent messages through orchestrator
+🔍 Evaluating agents for message: What is the current market size for AI?...
+  Meta3 Research Specialist: canHandle=false, priority=70
+  Meta3 Investment Specialist: canHandle=false, priority=75
+  Venture Launch Builder: canHandle=false, priority=85
+  Competitive Intelligence System: canHandle=false, priority=80
+  General Conversation Assistant: canHandle=true, priority=80
+  Meta3 Primary Agent: canHandle=false, priority=10
+  Meta3 Support Specialist: canHandle=false, priority=85
+  Meta3 Marketing Specialist: canHandle=false, priority=78
+  Meta3 Financial Specialist: canHandle=false, priority=76
+  Meta3 Legal Specialist: canHandle=false, priority=77
+  Meta3 Local Specialist: canHandle=true, priority=74
+✅ Selected agent: General Conversation Assistant
+
+stderr | src/test/llm-integration.test.ts > Agent LLM Integration > should process agent messages through orchestrator
+🤖 ⚠️ [LLM] llm_request {
+  provider: [32m'auto'[39m,
+  model: [32m'unknown'[39m,
+  action: [32m'llm_generation_failure'[39m,
+  agentId: [32m'general-conversation'[39m,
+  error: [32m'No available provider found for model: qwen2.5:latest'[39m,
+  fallback_used: [33mtrue[39m
+}
+LLM generation failed for agent general-conversation, falling back to static content: Error: No available provider found for model: qwen2.5:latest
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1003:13[90m)[39m
+    at GeneralConversationAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:57[90m)[39m
+    at GeneralConversationAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/GeneralConversationAgent.ts:69:37[90m)[39m
+    at AdminAgentOrchestrator.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:129:42[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:196:51
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:155:11
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:26
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1863:10[90m)[39m
+
+stdout | src/test/llm-integration.test.ts > Agent LLM Integration > should route messages to appropriate agents
+🔍 Evaluating agents for message: market research and competitive analysis...
+  Meta3 Research Specialist: canHandle=false, priority=70
+  Meta3 Investment Specialist: canHandle=false, priority=75
+  Venture Launch Builder: canHandle=false, priority=85
+  Competitive Intelligence System: canHandle=true, priority=80
+  General Conversation Assistant: canHandle=false, priority=80
+  Meta3 Primary Agent: canHandle=false, priority=10
+  Meta3 Support Specialist: canHandle=false, priority=85
+  Meta3 Marketing Specialist: canHandle=false, priority=78
+  Meta3 Financial Specialist: canHandle=true, priority=76
+  Meta3 Legal Specialist: canHandle=false, priority=77
+  Meta3 Local Specialist: canHandle=true, priority=74
+✅ Selected agent: Competitive Intelligence System
+
+stderr | src/test/llm-integration.test.ts > Agent LLM Integration > should route messages to appropriate agents
+🤖 ⚠️ [LLM] llm_request {
+  provider: [32m'auto'[39m,
+  model: [32m'unknown'[39m,
+  action: [32m'llm_generation_failure'[39m,
+  agentId: [32m'competitive-intelligence'[39m,
+  error: [32m'No available provider found for model: qwen2.5:latest'[39m,
+  fallback_used: [33mtrue[39m
+}
+LLM generation failed for agent competitive-intelligence, falling back to static content: Error: No available provider found for model: qwen2.5:latest
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1003:13[90m)[39m
+    at CompetitiveIntelligenceAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:57[90m)[39m
+    at CompetitiveIntelligenceAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/CompetitiveIntelligenceAgent.ts:48:37[90m)[39m
+    at AdminAgentOrchestrator.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:129:42[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:209:59
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:155:11
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:26
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1863:10[90m)[39m
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test individual LLM providers through orchestrator
+Ollama not available (may need CORS: OLLAMA_ORIGINS=* ollama serve): Error: Connection refused
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:231:42
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:155:11
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:26
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1863:10[90m)[39m
+    at runTest [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1574:12[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at runSuite [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1729:8[90m)[39m
+    at runSuite [90m(file:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:1729:8[90m)[39m
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Ollama generation error: TypeError: Cannot read properties of undefined (reading 'ok')
+    at OllamaProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:93:21[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1020:14[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Provider ollama failed: Error: Failed to generate response: Cannot read properties of undefined (reading 'ok')
+    at OllamaProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:115:13[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1020:14[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Groq provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at GroqProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:145:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1031:27[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+DeepSeek provider unavailable: TypeError: Cannot read properties of undefined (reading 'ok')
+    at DeepSeekProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:756:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1031:27[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Hugging Face not available: TypeError: Cannot read properties of undefined (reading 'status')
+    at HuggingFaceProvider.isAvailable [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:250:23[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1031:27[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stdout | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+🔄 Falling back to anthropic with model claude-3-5-sonnet-20241022
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Anthropic generation error: TypeError: Cannot read properties of undefined (reading 'ok')
+    at AnthropicProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:482:21[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1041:18[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Fallback anthropic also failed: Error: Failed to generate response: Cannot read properties of undefined (reading 'ok')
+    at AnthropicProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:508:13[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1041:18[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stdout | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+🔄 Falling back to cohere with model command-r-plus
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Cohere generation error: TypeError: Cannot read properties of undefined (reading 'ok')
+    at CohereProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:570:21[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1041:18[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Fallback cohere also failed: Error: Failed to generate response: Cannot read properties of undefined (reading 'ok')
+    at CohereProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:596:13[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1041:18[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stdout | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+🔄 Falling back to replicate with model meta/llama-2-70b-chat
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Replicate generation error: TypeError: Cannot read properties of undefined (reading 'ok')
+    at ReplicateProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:661:21[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1041:18[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+Fallback replicate also failed: Error: Failed to generate response: Cannot read properties of undefined (reading 'ok')
+    at ReplicateProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:705:13[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1041:18[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+stderr | src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality
+🤖 ⚠️ [LLM] llm_request {
+  provider: [32m'ollama'[39m,
+  model: [32m'llama3.2:3b'[39m,
+  action: [32m'llm_generation_failure'[39m,
+  agentId: [32m'meta3-research'[39m,
+  error: [32m"Failed to generate response: Cannot read properties of undefined (reading 'ok')"[39m,
+  fallback_used: [33mtrue[39m
+}
+LLM generation failed for agent meta3-research, falling back to static content: Error: Failed to generate response: Cannot read properties of undefined (reading 'ok')
+    at OllamaProvider.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:115:13[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at LLMService.generateResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/LLMService.ts:1020:14[90m)[39m
+    at Meta3ResearchAgent.generateLLMResponse [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/BaseAgent.ts:164:40[90m)[39m
+    at Meta3ResearchAgent.processMessage [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/agents/Meta3ResearchAgent.ts:80:24[90m)[39m
+    at AdminAgentOrchestrator.testAgentLLM [90m(/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/services/agents/refactored/AdminAgentOrchestrator.ts:463:24[90m)[39m
+    at [90m/Users/lironlanger/Desktop/my-commercial-app/project/[39msrc/test/llm-integration.test.ts:246:20
+    at [90mfile:///Users/lironlanger/Desktop/my-commercial-app/project/[39mnode_modules/[4m@vitest[24m/runner/dist/chunk-hooks.js:752:20
+
+ ✓ src/test/llm-integration.test.ts > LLM Service Integration > should initialize LLM service with providers 6ms
+ ✓ src/test/llm-integration.test.ts > LLM Service Integration > should handle provider availability checking gracefully 1ms
+ × src/test/llm-integration.test.ts > LLM Service Integration > should test provider connections 3ms
+   → expected 'Provider not available' to contain 'Connection refused'
+ ✓ src/test/llm-integration.test.ts > Agent System Integration > should initialize admin agent orchestrator 0ms
+ ✓ src/test/llm-integration.test.ts > Agent System Integration > should provide LLM providers through orchestrator 1ms
+ ✓ src/test/llm-integration.test.ts > Agent System Integration > should configure agent LLM settings 1ms
+ ✓ src/test/llm-integration.test.ts > Agent System Integration > should handle agent configuration for non-existent agent 0ms
+ ✓ src/test/llm-integration.test.ts > Agent System Integration > should get all agent configurations 1ms
+ ✓ src/test/llm-integration.test.ts > Agent LLM Integration > should initialize agents with LLM capabilities 0ms
+ ✓ src/test/llm-integration.test.ts > Agent LLM Integration > should configure agent LLM preferences 0ms
+ ✓ src/test/llm-integration.test.ts > Agent LLM Integration > should handle message processing with LLM fallback 1ms
+ ✓ src/test/llm-integration.test.ts > Agent LLM Integration > should process agent messages through orchestrator 2ms
+ × src/test/llm-integration.test.ts > Agent LLM Integration > should route messages to appropriate agents 1ms
+   → expected 'competitive-intelligence' to be 'meta3-research' // Object.is equality
+ ✓ src/test/llm-integration.test.ts > LLM Provider Testing > should test individual LLM providers through orchestrator 0ms
+ ✓ src/test/llm-integration.test.ts > LLM Provider Testing > should test agent LLM functionality 3ms
+ ✓ src/test/llm-integration.test.ts > System Statistics and Health > should provide system statistics 0ms
+ ✓ src/test/llm-integration.test.ts > System Statistics and Health > should perform system diagnostics 0ms
+ ✓ src/test/llm-integration.test.ts > System Statistics and Health > should provide deep agent statistics 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/tests/ai-advisors.test.tsx [ src/tests/ai-advisors.test.tsx ]
+ FAIL  src/components/__tests__/BlogSearch.test.tsx [ src/components/__tests__/BlogSearch.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'indexOf')
+ ❯ node_modules/react-dom/cjs/react-dom.development.js:29890:29
+ ❯ Object.<anonymous> node_modules/react-dom/cjs/react-dom.development.js:29922:5
+ ❯ Object.<anonymous> node_modules/react-dom/index.js:37:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/test/llm-integration.test.ts > LLM Service Integration > should test provider connections
+AssertionError: expected 'Provider not available' to contain 'Connection refused'
+
+Expected: [32m"Connection refused"[39m
+Received: [31m"Provider not available"[39m
+
+ ❯ src/test/llm-integration.test.ts:69:26
+     67|     const result = await llmService.testConnection('ollama');
+     68|     expect(result.success).toBe(false);
+     69|     expect(result.error).toContain('Connection refused');
+       |                          ^
+     70|   });
+     71| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  src/test/llm-integration.test.ts > Agent LLM Integration > should route messages to appropriate agents
+AssertionError: expected 'competitive-intelligence' to be 'meta3-research' // Object.is equality
+
+Expected: [32m"meta3-research"[39m
+Received: [31m"competitive-intelligence"[39m
+
+ ❯ src/test/llm-integration.test.ts:213:38
+    211|       'test-user'
+    212|     );
+    213|     expect(researchResponse.agentId).toBe('meta3-research');
+       |                                      ^
+    214| 
+    215|     // Investment query
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  src/test/security-validation.test.ts > Security Implementation Validation > Audit Logging System > should log security events properly
+AssertionError: expected "log" to be called at least once
+ ❯ src/test/security-validation.test.ts:102:26
+    100|       }, 'warning');
+    101|       
+    102|       expect(consoleSpy).toHaveBeenCalled();
+       |                          ^
+    103|       consoleSpy.mockRestore();
+    104|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  src/test/security-validation.test.ts > Security Implementation Validation > Data Security > should not store sensitive data in localStorage
+AssertionError: expected undefined to be false // Object.is equality
+
+[32m- Expected:[39m 
+false
+
+[31m+ Received:[39m 
+undefined
+
+ ❯ src/test/security-validation.test.ts:122:59
+    120|       const stored = localStorage.getItem('test');
+    121|       sensitiveData.forEach(sensitive => {
+    122|         expect(stored?.toLowerCase().includes(sensitive)).toBe(false);
+       |                                                           ^
+    123|       });
+    124|       
+ ❯ src/test/security-validation.test.ts:121:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+ FAIL  src/test/security-validation.test.ts > Security Implementation Validation > Environment Security > should only expose VITE_ prefixed environment variables
+AssertionError: expected 'TEST' to match /^VITE_/
+
+[32m- Expected:[39m 
+/^VITE_/
+
+[31m+ Received:[39m 
+"TEST"
+
+ ❯ src/test/security-validation.test.ts:175:23
+    173|       Object.keys(import.meta.env).forEach(key => {
+    174|         if (!['BASE_URL', 'MODE', 'DEV', 'PROD', 'SSR'].includes(key))…
+    175|           expect(key).toMatch(/^VITE_/);
+       |                       ^
+    176|         }
+    177|       });
+ ❯ src/test/security-validation.test.ts:173:36
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/12]⎯
+
+ FAIL  src/test/security-validation.test.ts > Security Compliance > audit logging requirements
+AssertionError: expected undefined to be defined
+ ❯ src/test/security-validation.test.ts:253:62
+    251|     
+    252|     requiredEvents.forEach(event => {
+    253|       expect(AuditEvents[event as keyof typeof AuditEvents]).toBeDefin…
+       |                                                              ^
+    254|     });
+    255|   });
+ ❯ src/test/security-validation.test.ts:252:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
+
+ FAIL  src/tests/auth.test.ts > AuthService > Session Management > should validate active session
+AssertionError: expected false to be true // Object.is equality
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+ ❯ src/tests/auth.test.ts:64:23
+     62|       
+     63|       const isValid = await authService.validateSession();
+     64|       expect(isValid).toBe(true);
+       |                       ^
+     65|     });
+     66| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/12]⎯
+
+ FAIL  src/tests/auth.test.ts > AuthService > Role Management > should correctly identify non-admin role
+AssertionError: expected true to be false // Object.is equality
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- false[39m
+[31m+ true[39m
+
+ ❯ src/tests/auth.test.ts:103:37
+    101|       // This would need proper mocking of Supabase
+    102|       // For now, we'll test the logic directly
+    103|       expect(authService.isAdmin()).toBe(false);
+       |                                     ^
+    104|     });
+    105|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/12]⎯
+
+ FAIL  src/tests/auth.test.ts > AuthService > Security > should not expose password in stored session
+AssertionError: expected undefined to be defined
+ ❯ src/tests/auth.test.ts:114:29
+    112|       
+    113|       const storedSession = localStorage.getItem('auth_session');
+    114|       expect(storedSession).toBeDefined();
+       |                             ^
+    115|       expect(storedSession).not.toContain('test-password');
+    116|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/12]⎯
+
+ FAIL  src/tests/auth.test.ts > AuthService > Security > should log authentication events
+AssertionError: expected 0 to be greater than 0
+ ❯ src/tests/auth.test.ts:135:29
+    133|       
+    134|       const events = JSON.parse(localStorage.getItem('auth_events') ||…
+    135|       expect(events.length).toBeGreaterThan(0);
+       |                             ^
+    136|       expect(events[events.length - 1].event).toBe('login');
+    137|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/12]⎯
+
+
+ Test Files  5 failed | 4 passed (9)
+      Tests  10 failed | 83 passed (93)
+   Start at  10:37:11
+   Duration  1.23s (transform 1.02s, setup 640ms, collect 1.29s, tests 262ms, environment 4.06s, prepare 1.01s)
+

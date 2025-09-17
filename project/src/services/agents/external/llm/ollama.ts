@@ -1,0 +1,66 @@
+import { providerRegistry, LLMProvider } from './provider';
+
+/**
+ * OllamaProvider
+ *
+ * Connects to a locally running Ollama server to perform inference on
+ * open‑source language models (e.g. Llama 3, Mistral).  Uses the
+ * environment variables `OLLAMA_URL` (e.g. `http://localhost:11434`)
+ * and `OLLAMA_MODEL` (e.g. `llama3` or `mistral`) to determine the
+ * server endpoint and default model.
+ */
+export class OllamaProvider implements LLMProvider {
+  id = 'ollama';
+  name = 'Ollama (Local)';
+  private baseUrl: string;
+  private defaultModel: string;
+
+  constructor() {
+    // Pull configuration from the environment at runtime
+    this.baseUrl = import.meta.env.VITE_OLLAMA_URL || 'http://localhost:11434';
+    this.defaultModel = import.meta.env.VITE_OLLAMA_MODEL || 'llama3';
+  }
+
+  async isAvailable(): Promise<boolean> {
+    try {
+      const res = await fetch(`${this.baseUrl}/api/tags`, { method: 'GET' });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  async generate(params: {
+    model: string;
+    messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }>;
+    temperature?: number;
+    maxTokens?: number;
+    topP?: number;
+  }): Promise<string> {
+    const modelName = params.model || this.defaultModel;
+    const payload = {
+      model: modelName,
+      messages: params.messages,
+      options: {
+        temperature: params.temperature ?? 0.7,
+        max_tokens: params.maxTokens ?? 1024,
+        top_p: params.topP ?? 0.9
+      },
+      stream: false
+    };
+    const res = await fetch(`${this.baseUrl}/api/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Ollama error: ${res.status} ${text}`);
+    }
+    const data = await res.json();
+    return data.message?.content || '';
+  }
+}
+
+// Register provider globally upon import
+providerRegistry.register(new OllamaProvider());

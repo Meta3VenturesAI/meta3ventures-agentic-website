@@ -1,0 +1,179 @@
+{
+  "version": "1.0.0",
+  "description": "Agent evaluation tasks for Meta3Ventures platform",
+  "tasks": [
+    {
+      "id": "summarize_readme",
+      "name": "Summarize README",
+      "description": "Read and summarize the project README.md file",
+      "category": "document_analysis",
+      "difficulty": "easy",
+      "expected_output": "A concise summary of the project's purpose, features, and setup instructions",
+      "input": {
+        "type": "file",
+        "path": "README.md"
+      },
+      "evaluation": {
+        "type": "semantic_similarity",
+        "threshold": 0.7,
+        "criteria": [
+          "mentions AI/ML capabilities",
+          "includes setup instructions",
+          "describes main features"
+        ]
+      }
+    },
+    {
+      "id": "derive_seo_title",
+      "name": "Derive SEO Title",
+      "description": "Generate an SEO-optimized title for a given page content",
+      "category": "seo_optimization",
+      "difficulty": "medium",
+      "expected_output": "A title under 60 characters that includes relevant keywords",
+      "input": {
+        "type": "text",
+        "content": "Meta3Ventures is a cutting-edge AI platform that helps startups and enterprises leverage artificial intelligence for digital transformation. Our services include AI consulting, custom AI solutions, and venture studio support for innovative companies."
+      },
+      "evaluation": {
+        "type": "criteria_check",
+        "criteria": [
+          "length <= 60 characters",
+          "contains 'AI' or 'artificial intelligence'",
+          "contains 'Meta3Ventures' or 'startup'",
+          "is grammatically correct"
+        ]
+      }
+    },
+    {
+      "id": "convert_routes_redirects",
+      "name": "Convert Routes to Netlify Redirects",
+      "description": "Convert React Router routes to Netlify redirects configuration",
+      "category": "code_generation",
+      "difficulty": "medium",
+      "expected_output": "Valid Netlify redirects configuration in TOML format",
+      "input": {
+        "type": "routes",
+        "routes": [
+          { "path": "/", "component": "Home" },
+          { "path": "/about", "component": "About" },
+          { "path": "/services", "component": "Services" },
+          { "path": "/blog/:id", "component": "BlogPost" },
+          { "path": "/admin/*", "component": "AdminDashboard" }
+        ]
+      },
+      "evaluation": {
+        "type": "syntax_validation",
+        "format": "toml",
+        "criteria": [
+          "valid TOML syntax",
+          "includes redirect rules for all routes",
+          "handles dynamic routes correctly",
+          "includes proper status codes"
+        ]
+      }
+    },
+    {
+      "id": "analyze_error_patterns",
+      "name": "Analyze Error Patterns",
+      "description": "Analyze ESLint error output and categorize by type and frequency",
+      "category": "code_analysis",
+      "difficulty": "hard",
+      "expected_output": "Structured analysis of error patterns with counts and recommendations",
+      "input": {
+        "type": "eslint_output",
+        "sample": "src/components/Test.tsx:5:10 error 'unusedVar' is defined but never used @typescript-eslint/no-unused-vars\nsrc/components/Test.tsx:10:15 error Unexpected any. Specify a different type @typescript-eslint/no-explicit-any"
+      },
+      "evaluation": {
+        "type": "structured_output",
+        "schema": {
+          "error_types": "object",
+          "total_errors": "number",
+          "most_common": "array",
+          "recommendations": "array"
+        },
+        "criteria": [
+          "correctly identifies error types",
+          "provides accurate counts",
+          "suggests actionable recommendations"
+        ]
+      }
+    },
+    {
+      "id": "generate_api_docs",
+      "name": "Generate API Documentation",
+      "description": "Generate OpenAPI documentation for a simple API endpoint",
+      "category": "documentation",
+      "difficulty": "medium",
+      "expected_output": "Valid OpenAPI 3.0 specification for the given endpoint",
+      "input": {
+        "type": "api_endpoint",
+        "endpoint": {
+          "method": "POST",
+          "path": "/api/agents/chat",
+          "description": "Send a message to an AI agent and get a response",
+          "parameters": [
+            { "name": "agent_id", "type": "string", "required": true },
+            { "name": "message", "type": "string", "required": true },
+            { "name": "context", "type": "object", "required": false }
+          ],
+          "response": {
+            "type": "object",
+            "properties": {
+              "response": { "type": "string" },
+              "usage": { "type": "object" },
+              "timestamp": { "type": "string" }
+            }
+          }
+        }
+      },
+      "evaluation": {
+        "type": "schema_validation",
+        "format": "openapi",
+        "criteria": [
+          "valid OpenAPI 3.0 syntax",
+          "includes all required fields",
+          "proper parameter definitions",
+          "correct response schema"
+        ]
+      }
+    },
+    {
+      "id": "optimize_bundle_size",
+      "name": "Optimize Bundle Size",
+      "description": "Analyze bundle size data and suggest optimization strategies",
+      "category": "performance",
+      "difficulty": "hard",
+      "expected_output": "Prioritized list of optimization recommendations with expected impact",
+      "input": {
+        "type": "bundle_analysis",
+        "data": {
+          "total_size": "3.4M",
+          "main_bundle": "568.58 kB",
+          "chunks": [
+            { "name": "charts", "size": "388.69 kB", "gzipped": "99.77 kB" },
+            { "name": "react-vendor", "size": "140.47 kB", "gzipped": "45.05 kB" },
+            { "name": "utils", "size": "135.78 kB", "gzipped": "39.82 kB" }
+          ]
+        }
+      },
+      "evaluation": {
+        "type": "optimization_analysis",
+        "criteria": [
+          "identifies largest chunks",
+          "suggests code splitting strategies",
+          "recommends library alternatives",
+          "estimates size reduction impact"
+        ]
+      }
+    }
+  ],
+  "evaluation_config": {
+    "timeout": 30000,
+    "max_retries": 2,
+    "parallel_tasks": 3,
+    "scoring": {
+      "pass_threshold": 0.7,
+      "weighted_criteria": true
+    }
+  }
+}

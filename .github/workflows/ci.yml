@@ -1,0 +1,114 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: project/package-lock.json
+        
+    - name: Install dependencies
+      working-directory: ./project
+      run: npm ci
+      
+    - name: Run linting
+      working-directory: ./project
+      run: npm run lint
+      
+    - name: Run type checking
+      working-directory: ./project
+      run: npm run typecheck
+      
+    - name: Run tests
+      working-directory: ./project
+      run: npm test
+      
+    - name: Run security audit
+      working-directory: ./project
+      run: npm audit --audit-level=moderate
+      
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: project/package-lock.json
+        
+    - name: Install dependencies
+      working-directory: ./project
+      run: npm ci
+      
+    - name: Build application
+      working-directory: ./project
+      run: npm run build
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-files
+        path: project/dist/
+        retention-days: 7
+        
+  deploy-preview:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-files
+        path: project/dist/
+        
+    - name: Deploy to preview
+      run: echo "Deploy to preview environment"
+      # Add your preview deployment logic here
+      
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-files
+        path: project/dist/
+        
+    - name: Deploy to production
+      run: echo "Deploy to production environment"
+      # Add your production deployment logic here

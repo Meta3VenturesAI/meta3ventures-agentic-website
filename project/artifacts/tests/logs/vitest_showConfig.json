@@ -1,0 +1,11 @@
+
+ DEV  v3.2.4 /Users/lironlanger/Desktop/my-commercial-app/project
+
+No test files found. You can change the file name pattern by pressing "p"
+
+filter: showConfig
+include: src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}
+exclude:  node_modules, dist, .idea, .git, .cache
+
+Cancelling test run. Press CTRL+c again to exit forcefully.
+
