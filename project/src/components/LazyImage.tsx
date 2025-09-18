@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 
 interface LazyImageProps {
   src: string;
@@ -35,11 +35,11 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Reliable fallback images with proper CORS headers
-  const fallbackImages = [
+  const fallbackImages = useMemo(() => [
     'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
     'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
     'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=800'
-  ];
+  ], []);
 
   // Set up intersection observer for lazy loading
   useEffect(() => {

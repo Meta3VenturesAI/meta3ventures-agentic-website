@@ -16,7 +16,7 @@ interface Agent {
   id: string;
   name: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   color: string;
   specialties: string[];
   examples: string[];

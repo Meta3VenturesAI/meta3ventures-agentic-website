@@ -66,7 +66,7 @@ export const BlogAnalyticsDashboard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [timeRange, generateTimeSeriesData, generateEngagementData, generateCategoryData]);
+  }, [generateTimeSeriesData, generateEngagementData, generateCategoryData]);
 
   const generateTimeSeriesData = () => {
     const days = timeRange === '7d' ? 7 : timeRange === '30d' ? 30 : timeRange === '90d' ? 90 : 365;

@@ -19,7 +19,7 @@ const LoginForm: React.FC = () => {
         setError('Invalid password. Please contact administrator.');
         setPassword('');
       }
-    } catch (error) {
+    } catch (_error) {
       setError('Login failed. Please try again.');
       setPassword('');
     } finally {

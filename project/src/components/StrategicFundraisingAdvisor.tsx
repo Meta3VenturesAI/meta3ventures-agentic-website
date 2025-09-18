@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  MessageCircle, X, Send, Minimize2, Maximize2, TrendingUp,
-  DollarSign, FileText, Users, Target, BarChart, Shield,
+  X, Send, Minimize2, Maximize2, TrendingUp,
+  DollarSign, FileText, Users, BarChart, Shield,
   Briefcase, Award, Calendar, CheckCircle, AlertCircle,
   FileCheck, PresentationIcon, Calculator, Globe, Zap,
   ChevronRight, Download, ExternalLink, Info
