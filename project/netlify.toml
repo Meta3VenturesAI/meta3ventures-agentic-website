@@ -1,6 +1,6 @@
 [build]
-  publish = "dist"
-  command = "npm run build"
+  publish = "project/dist"
+  command = "cd project && npm run build"
   functions = "netlify/functions"
 
 [build.environment]
@@ -53,7 +53,7 @@
 
 # Deploy preview branches (staging)
 [context.deploy-preview]
-  command = "npm run build"
+  command = "cd project && npm run build"
 
 [context.deploy-preview.environment]
   VITE_APP_ENV = "staging"
@@ -61,7 +61,7 @@
 
 # Branch deploys (development)
 [context.branch-deploy]
-  command = "npm run build"
+  command = "cd project && npm run build"
 
 [context.branch-deploy.environment]
   VITE_APP_ENV = "development"
