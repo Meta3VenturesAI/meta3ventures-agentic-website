@@ -116,7 +116,7 @@ export const Partners: React.FC = () => {
   // Log all partner logos on component mount to verify paths
   useEffect(() => {
     console.log("Partner logos:", partners.map(p => ({ name: p.name, logo: p.imageUrl })));
-  }, []);
+  }, [partners]);
 
   const handleImageError = (partnerName: string) => {
     console.error(`Failed to load image for partner: ${partnerName}`);

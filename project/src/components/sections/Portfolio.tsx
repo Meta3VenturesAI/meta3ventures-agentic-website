@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -193,9 +193,9 @@ export const Portfolio: React.FC = () => {
     }
   ];
 
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     setActiveIndex((current) => (current + 1) % companies.length);
-  };
+  }, [companies.length]);
 
   const prevTestimonial = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + companies.length) % companies.length);
@@ -209,7 +209,7 @@ export const Portfolio: React.FC = () => {
       return () => clearInterval(interval);
     }
     return undefined;
-  }, [isPaused]);
+  }, [isPaused, nextTestimonial]);
 
   const getCategoryColor = (category: string): string => {
     const colors: Record<string, string> = {

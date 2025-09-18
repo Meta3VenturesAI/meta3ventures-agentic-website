@@ -86,7 +86,7 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ initialData, onSave, onC
         }));
       }
     }
-  }, [formData.content]);
+  }, [formData.content, formData.excerpt]);
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};

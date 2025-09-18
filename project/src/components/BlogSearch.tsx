@@ -73,34 +73,36 @@ export const BlogSearch: React.FC<BlogSearchProps> = ({
 
   // Debounced search function
   const performSearch = useCallback(
-    debounce(async (searchQuery: string) => {
-      if (!searchQuery.trim() && !selectedCategory && selectedTags.length === 0 && !selectedAuthor) {
-        setResults([]);
-        setIsOpen(false);
-        return;
-      }
+    (searchQuery: string) => {
+      debounce(async () => {
+        if (!searchQuery.trim() && !selectedCategory && selectedTags.length === 0 && !selectedAuthor) {
+          setResults([]);
+          setIsOpen(false);
+          return;
+        }
 
-      setLoading(true);
-      try {
-        const { data } = await blogService.getPosts({
-          search: searchQuery,
-          category: selectedCategory,
-          tags: selectedTags,
-          author: selectedAuthor,
-          date_from: dateRange.from,
-          date_to: dateRange.to,
-          limit: 10
-        });
-        
-        setResults(data);
-        setIsOpen(true);
-      } catch (error) {
-        console.error('Search error:', error);
-        setResults([]);
-      } finally {
-        setLoading(false);
-      }
-    }, 300),
+        setLoading(true);
+        try {
+          const { data } = await blogService.getPosts({
+            search: searchQuery,
+            category: selectedCategory,
+            tags: selectedTags,
+            author: selectedAuthor,
+            date_from: dateRange.from,
+            date_to: dateRange.to,
+            limit: 10
+          });
+          
+          setResults(data);
+          setIsOpen(true);
+        } catch (error) {
+          console.error('Search error:', error);
+          setResults([]);
+        } finally {
+          setLoading(false);
+        }
+      }, 300)();
+    },
     [selectedCategory, selectedTags, selectedAuthor, dateRange]
   );
 

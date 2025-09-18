@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 
 // Lazy load charts component for better bundle splitting
 const BlogCharts = lazy(() => import('./charts/BlogCharts'));
@@ -43,15 +43,15 @@ export const BlogAnalyticsDashboard: React.FC = () => {
   const [stats, setStats] = useState<BlogStats | null>(null);
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d' | '1y'>('30d');
   const [loading, setLoading] = useState(true);
-  const [viewsData, setViewsData] = useState<any[]>([]);
-  const [engagementData, setEngagementData] = useState<any[]>([]);
-  const [categoryData, setCategoryData] = useState<any[]>([]);
+  const [viewsData, setViewsData] = useState<Array<{ date: string; views: number }>>([]);
+  const [engagementData, setEngagementData] = useState<Array<{ post: string; likes: number; comments: number }>>([]);
+  const [categoryData, setCategoryData] = useState<Array<{ category: string; count: number }>>([]);
 
   useEffect(() => {
     loadAnalytics();
-  }, [timeRange]);
+  }, [timeRange, loadAnalytics]);
 
-  const loadAnalytics = async () => {
+  const loadAnalytics = useCallback(async () => {
     setLoading(true);
     try {
       const blogStats = await blogService.getBlogStats();
@@ -66,7 +66,7 @@ export const BlogAnalyticsDashboard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [timeRange]);
 
   const generateTimeSeriesData = () => {
     const days = timeRange === '7d' ? 7 : timeRange === '30d' ? 30 : timeRange === '90d' ? 90 : 365;

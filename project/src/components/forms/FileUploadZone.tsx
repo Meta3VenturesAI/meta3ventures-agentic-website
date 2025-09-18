@@ -70,12 +70,12 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
     
     const droppedFiles = Array.from(e.dataTransfer.files);
     handleFiles(droppedFiles);
-  }, [disabled]);
+  }, [disabled, handleFiles]);
 
   const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.target.files ? Array.from(e.target.files) : [];
     handleFiles(selectedFiles);
-  }, []);
+  }, [handleFiles]);
 
   const handleFiles = useCallback((files: File[]) => {
     if (value.length + files.length > maxFiles) {

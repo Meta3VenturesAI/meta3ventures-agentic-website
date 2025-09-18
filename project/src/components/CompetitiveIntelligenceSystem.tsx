@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Brain, Search, Target, Users, TrendingUp, Shield, BarChart,
-  ChevronRight, X, Minimize2, Maximize2, Play, Pause, Download,
+  Brain, Search, Target, Users, TrendingUp, BarChart,
+  X, Minimize2, Maximize2, Play, Pause, Download,
   AlertCircle, CheckCircle, Clock, Zap, Eye, FileText, Map,
   Lightbulb, Award, Layers, Grid, List, RefreshCw, Send
 } from 'lucide-react';

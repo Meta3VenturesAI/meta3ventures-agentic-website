@@ -3,7 +3,7 @@
  * Enhances mobile experience for virtual agents system
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Smartphone, Tablet, Monitor, RotateCcw, Maximize2,
   Minimize2, Settings, Eye, EyeOff, Zap
@@ -163,7 +163,7 @@ const MobileOptimizer: React.FC = () => {
   }, [optimization.gestureSupport, deviceInfo.touchSupport]);
 
   // Handle orientation lock
-  const handleOrientationLock = async () => {
+  const handleOrientationLock = useCallback(async () => {
     if (!('screen' in window) || !('orientation' in window.screen)) return;
 
     try {
@@ -176,11 +176,11 @@ const MobileOptimizer: React.FC = () => {
     } catch (error) {
       console.warn('Orientation lock not supported:', error);
     }
-  };
+  }, [optimization.orientationLock]);
 
   useEffect(() => {
     handleOrientationLock();
-  }, [optimization.orientationLock]);
+  }, [optimization.orientationLock, handleOrientationLock]);
 
   // Auto-show on mobile devices
   useEffect(() => {
