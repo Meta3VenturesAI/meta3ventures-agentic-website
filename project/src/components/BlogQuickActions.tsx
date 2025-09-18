@@ -4,7 +4,7 @@ import { blogTemplates } from '../utils/blogHelpers';
 import { BlogPostFormData } from '../types/blog';
 
 interface BlogQuickActionsProps {
-  onCreatePost: (template?: Partial<BlogPostFormData>) => void;
+  onCreatePost: (_template?: Partial<BlogPostFormData>) => void;
   onViewAnalytics: () => void;
   totalPosts: number;
   publishedPosts: number;

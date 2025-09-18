@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
   const toggleAdminMenu = () => setIsAdminMenuOpen(!isAdminMenuOpen);
 
-  const scrollToSection = (id: string) => {
+  const _scrollToSection = (id: string) => {
     setIsMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: id } });

@@ -18,7 +18,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   src,
   alt,
   className = '',
-  placeholder,
+  placeholder: _placeholder,
   onLoad,
   onError,
   fallbackText,

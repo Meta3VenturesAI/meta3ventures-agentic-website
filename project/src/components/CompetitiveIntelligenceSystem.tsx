@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Brain, Search, Target, Users, TrendingUp, BarChart,
   X, Minimize2, Maximize2, Play, Download,
-  AlertCircle, Eye, FileText, Map,
-  Lightbulb, Award, Layers, Grid, List, RefreshCw, Send
+  AlertCircle, FileText, Map,
+  Lightbulb, Award, Layers, Grid, List, RefreshCw
 } from 'lucide-react';
 import { researchAgentsService } from '../services/research-agents.service';
 import { dataStorage } from '../services/data-storage.service';
