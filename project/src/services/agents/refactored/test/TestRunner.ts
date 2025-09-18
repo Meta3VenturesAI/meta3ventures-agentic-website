@@ -131,7 +131,7 @@ export class TestRunner {
         } else {
           console.log(`   ❌ Failed: ${result.error}`);
         }
-      } catch {
+      } catch (error) {
         console.log(`   ❌ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       }
     }
@@ -167,13 +167,13 @@ export class TestRunner {
         if (result.success) {
           console.log(`   ✅ Agent configured correctly`);
           if (result.data) {
-            console.log(`   🛠️  Available Tools: ${result.data.toolCount}`);
-            console.log(_`   📋 Tools: ${result.data.availableTools.map((t: unknown) => t.name).join(', ')}`);
+            console.log(`   🛠️  Available Tools: ${(result.data as any).toolCount}`);
+            console.log(`   📋 Tools: ${(result.data as any).availableTools.map((t: any) => t.name).join(', ')}`);
           }
         } else {
           console.log(`   ❌ Failed: ${result.error}`);
         }
-      } catch {
+      } catch (error) {
         console.log(`   ❌ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       }
     }
@@ -198,7 +198,7 @@ export class TestRunner {
       }
       
       return success;
-    } catch {
+    } catch (error) {
       console.log('❌ Quick test error:', error instanceof Error ? error.message : 'Unknown error');
       return false;
     }

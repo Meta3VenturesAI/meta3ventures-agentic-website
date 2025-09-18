@@ -621,7 +621,7 @@ const CompetitiveIntelligenceSystem: React.FC<CompetitiveIntelligenceSystemProps
                         {['quick', 'standard', 'comprehensive'].map((depth) => (
                           <button
                             key={depth}
-                            onClick={() => setFormData({ ...formData, researchDepth: depth as unknown })}
+                            onClick={() => setFormData({ ...formData, researchDepth: depth as "comprehensive" | "quick" | "standard" })}
                             className={`px-4 py-2 rounded-lg border transition-colors ${
                               formData.researchDepth === depth
                                 ? 'bg-indigo-600 text-white border-indigo-600'
@@ -641,12 +641,12 @@ const CompetitiveIntelligenceSystem: React.FC<CompetitiveIntelligenceSystemProps
                           <label key={area} className="flex items-center">
                             <input
                               type="checkbox"
-                              checked={formData.focusAreas?.includes(area as unknown) || false}
+                              checked={formData.focusAreas?.includes(area as "market" | "competitors" | "positioning" | "customers" | "differentiation") || false}
                               onChange={(e) => {
                                 if (e.target.checked) {
                                   setFormData({
                                     ...formData,
-                                    focusAreas: [...(formData.focusAreas || []), area as unknown]
+                                    focusAreas: [...(formData.focusAreas || []), area as "market" | "competitors" | "positioning" | "customers" | "differentiation"]
                                   });
                                 } else {
                                   setFormData({

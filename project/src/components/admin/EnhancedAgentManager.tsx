@@ -225,7 +225,7 @@ const EnhancedAgentManager: React.FC = () => {
                   {['active', 'paused', 'maintenance'].map((status) => (
                     <button
                       key={status}
-                      onClick={() => handleStatusChange(agent.id, status as unknown)}
+                      onClick={() => handleStatusChange(agent.id, status as "active" | "paused" | "maintenance")}
                       className={`px-3 py-1 text-xs rounded-full capitalize ${
                         agent.status === status 
                           ? getStatusColor(status)
@@ -460,7 +460,7 @@ const EnhancedAgentManager: React.FC = () => {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as unknown)}
+                onClick={() => setActiveTab(tab.id as "analytics" | "templates" | "manage" | "create")}
                 className={`flex items-center space-x-2 py-2 px-1 border-b-2 font-medium text-sm ${
                   activeTab === tab.id
                     ? 'border-blue-500 text-blue-600'

@@ -211,7 +211,7 @@ export const fundingCalculatorTool: AgentTool = {
   id: 'funding-calculator',
   name: 'Funding Requirements Calculator',
   description: 'Calculates funding requirements, runway, and provides strategic fundraising guidance',
-  category: 'financial',
+  category: 'calculation',
   parameters: {
     type: 'object',
     properties: {

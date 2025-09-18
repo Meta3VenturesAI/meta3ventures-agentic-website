@@ -29,7 +29,7 @@ class ErrorTracker {
   }
 
   private getBuildVersion(): string {
-    return (window as unknown).__APP_VERSION__ || 'unknown';
+    return (window as any).__APP_VERSION__ || 'unknown';
   }
 
   private setupGlobalErrorHandlers(): void {

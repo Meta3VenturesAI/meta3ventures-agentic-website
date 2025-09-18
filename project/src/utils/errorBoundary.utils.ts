@@ -42,8 +42,8 @@ export const serializeError = (
     route: window.location.pathname,
     userAgent: navigator.userAgent,
     timestamp: new Date(),
-    buildVersion: (window as unknown).__APP_VERSION__,
-    environment: (window as unknown).__ENVIRONMENT__ || 'unknown',
+    buildVersion: (window as any).__APP_VERSION__,
+    environment: (window as any).__ENVIRONMENT__ || 'unknown',
     ...additionalContext
   };
 
@@ -51,7 +51,7 @@ export const serializeError = (
     name: error.name,
     message: error.message,
     stack: error.stack,
-    cause: (error as unknown).cause,
+    cause: (error as any).cause,
     context,
     errorInfo
   };
@@ -237,7 +237,7 @@ export const setupGlobalErrorHandling = () => {
   window.addEventListener('error', (event) => {
     if (event.target !== window && event.target instanceof HTMLElement) {
       const element = event.target as HTMLElement;
-      const error = new Error(`Resource loading failed: ${element.tagName} - ${(element as unknown).src || (element as unknown).href}`);
+      const error = new Error(`Resource loading failed: ${element.tagName} - ${(element as any).src || (element as any).href}`);
       logError(error, undefined, { route: 'resource_loading_error' });
     }
   }, true);

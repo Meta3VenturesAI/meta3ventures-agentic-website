@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { useForm } from '@formspree/react';
 import toast from 'react-hot-toast';
-import { dataStorage } from '../../services/data-storage.service';
+import { dataStorage, FormType } from '../../services/data-storage.service';
 import { SEO } from '../SEO';
 
 type ContactType = 'entrepreneur' | 'investor' | 'media' | 'partnership' | 'general';
@@ -79,7 +79,7 @@ export const ContactFormsHub: React.FC = () => {
     if (state.succeeded) {
       // Store form submission
       dataStorage.storeFormSubmission({
-        type: `contact_${selectedType}` as unknown,
+        type: `contact_${selectedType}` as FormType,
         data: {
           ...formData,
           contactType: selectedType,

@@ -69,7 +69,7 @@ class FormValidator {
   /**
    * Validate a single field
    */
-  validateField(value: unknown, rules: ValidationRule, messages?: unknown): string | null {
+  validateField(value: unknown, rules: ValidationRule, messages?: any): string | null {
     // Required validation
     if (rules.required && !value) {
       return messages?.required || this.defaultMessages.required;
@@ -81,34 +81,34 @@ class FormValidator {
     }
 
     // Email validation
-    if (rules.email && !this.patterns.email.test(value)) {
+    if (rules.email && !this.patterns.email.test(value as string)) {
       return messages?.email || this.defaultMessages.email;
     }
 
     // URL validation
-    if (rules.url && !this.patterns.url.test(value)) {
+    if (rules.url && !this.patterns.url.test(value as string)) {
       return messages?.url || this.defaultMessages.url;
     }
 
     // Phone validation
-    if (rules.phone && !this.patterns.phone.test(value)) {
+    if (rules.phone && !this.patterns.phone.test(value as string)) {
       return messages?.phone || this.defaultMessages.phone;
     }
 
     // Min length validation
-    if (rules.minLength && value.length < rules.minLength) {
+    if (rules.minLength && (value as string).length < rules.minLength) {
       const message = messages?.minLength || this.defaultMessages.minLength;
       return message.replace('{min}', rules.minLength.toString());
     }
 
     // Max length validation
-    if (rules.maxLength && value.length > rules.maxLength) {
+    if (rules.maxLength && (value as string).length > rules.maxLength) {
       const message = messages?.maxLength || this.defaultMessages.maxLength;
       return message.replace('{max}', rules.maxLength.toString());
     }
 
     // Pattern validation
-    if (rules.pattern && !rules.pattern.test(value)) {
+    if (rules.pattern && !rules.pattern.test(value as string)) {
       return messages?.pattern || this.defaultMessages.pattern;
     }
 

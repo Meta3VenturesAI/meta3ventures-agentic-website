@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Ollama - Local LLM Server
+  ollama:
+    image: ollama/ollama:latest
+    container_name: meta3-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_ORIGINS=*
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # vLLM - High-performance LLM Serving
+  vllm:
+    image: vllm/vllm-openai:latest
+    container_name: meta3-vllm
+    ports:
+      - "8000:8000"
+    volumes:
+      - vllm_data:/root/.cache
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+    command: >
+      --model meta-llama/Llama-2-7b-chat-hf
+      --host 0.0.0.0
+      --port 8000
+      --api-key ""
+      --served-model-name llama-2-7b-chat
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/v1/models"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # LocalAI - Self-hosted OpenAI Compatible API
+  localai:
+    image: localai/localai:latest
+    container_name: meta3-localai
+    ports:
+      - "8080:8080"
+    volumes:
+      - localai_data:/models
+    environment:
+      - MODELS_PATH=/models
+      - CORS_ALLOW_ORIGINS=*
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/models"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Grok API Proxy (using OpenAI-compatible endpoint)
+  grok-proxy:
+    image: nginx:alpine
+    container_name: meta3-grok-proxy
+    ports:
+      - "8081:80"
+    volumes:
+      - ./netlify/functions/grok-proxy.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
+
+  # DeepSeek API Proxy (using OpenAI-compatible endpoint)
+  deepseek-proxy:
+    image: nginx:alpine
+    container_name: meta3-deepseek-proxy
+    ports:
+      - "8082:80"
+    volumes:
+      - ./netlify/functions/deepseek-proxy.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  vllm_data:
+  localai_data:

@@ -60,7 +60,7 @@ export class VectorDatabase {
       
       this.isInitialized = true;
       console.log(`✅ Vector Database initialized with ${this.documents.size} documents`);
-    } catch {
+    } catch (error) {
       console.error('Vector Database initialization failed:', error);
       throw error;
     }

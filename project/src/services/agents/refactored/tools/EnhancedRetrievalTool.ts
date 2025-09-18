@@ -117,7 +117,7 @@ export const enhancedRetrievalTool: AgentTool = {
           }
         }
       };
-    } catch {
+    } catch (error) {
       console.error('Enhanced retrieval tool error:', error);
       return {
         success: false,

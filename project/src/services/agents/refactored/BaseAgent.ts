@@ -3,7 +3,7 @@
  * Provides common functionality and enforces consistent interface
  */
 
-import { AgentMessage, AgentContext, AgentCapabilities, AgentResponse } from './types';
+import { AgentMessage, AgentContext, AgentCapabilities, AgentResponse, AgentAttachment } from './types';
 import { llmService, LLMResponse } from './LLMService';
 import { auditLogger } from '../../../utils/audit-logger';
 
@@ -108,7 +108,7 @@ export abstract class BaseAgent {
     return {
       content,
       confidence,
-      attachments: attachments || []
+      attachments: (attachments || []) as AgentAttachment[]
     };
   }
 
@@ -143,7 +143,7 @@ export abstract class BaseAgent {
         availableTools = agentToolsSystem.getToolsForAgent(this.capabilities.id);
 
         if (availableTools.length > 0) {
-          const toolsDescription = availableTools.map((tool: unknown) =>
+          const toolsDescription = availableTools.map((tool: any) =>
             `- ${tool.name}: ${tool.description}`
           ).join('\n');
 
@@ -154,7 +154,7 @@ export abstract class BaseAgent {
         // Fallback to context-provided tools
         availableTools = (context?.metadata?.availableTools as unknown[]) || [];
         if (availableTools.length > 0) {
-          const toolsDescription = availableTools.map((tool: unknown) =>
+          const toolsDescription = availableTools.map((tool: any) =>
             `- ${tool.name}: ${tool.description}`
           ).join('\n');
           enhancedSystemPrompt += `\n\nAvailable Tools:\n${toolsDescription}\n\nWhen you need to use a tool, indicate it in your response with [TOOL:tool-id:parameters].\nFor example: [TOOL:market-analysis:{"industry":"fintech","region":"US"}]`;
@@ -265,7 +265,7 @@ export abstract class BaseAgent {
           for (const match of toolMatches) {
             const [, toolId, paramsStr] = match.match(/\[TOOL:([^:]+):([^\]]+)\]/) || [];
 
-            if (toolId && availableTools.find((t: unknown) => t.id === toolId)) {
+            if (toolId && availableTools.find((t: any) => t.id === toolId)) {
               try {
                 const params = JSON.parse(paramsStr);
                 const toolResult = await agentToolsSystem.executeTool(toolId, params, context);
@@ -273,7 +273,7 @@ export abstract class BaseAgent {
                 // Replace tool call with result
                 finalContent = finalContent.replace(
                   match,
-                  `\n\n**${availableTools.find((t: unknown) => t.id === toolId)?.name} Result:**\n${this.formatToolResult(toolResult)}\n`
+                  `\n\n**${(availableTools.find((t: any) => t.id === toolId) as any)?.name || 'Tool'} Result:**\n${this.formatToolResult(toolResult)}\n`
                 );
                 
                 toolsUsed.push(toolId);
@@ -304,7 +304,7 @@ export abstract class BaseAgent {
       auditLogger.logLLMInteraction(this.preferredProvider || 'auto', this.preferredModel || 'unknown', {
         action: 'llm_generation_failure',
         agentId: this.capabilities.id,
-        error: error.message,
+        error: (error as any).message,
         fallback_used: true
       }, 'failure');
 
@@ -320,7 +320,7 @@ export abstract class BaseAgent {
           {
             type: 'fallback_notice',
             reason: 'LLM unavailable',
-            originalError: error.message
+            originalError: (error as any).message
           }
         ]
       );

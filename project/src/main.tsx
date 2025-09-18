@@ -64,7 +64,9 @@ if ('serviceWorker' in navigator && import.meta.env.PROD) {
         scope: '/'
       });
       
-      console.log('SW registered: ', registration);
+      if (import.meta.env.DEV) {
+        console.log('SW registered: ', registration);
+      }
       
       // Handle service worker updates
       registration.addEventListener('updatefound', () => {
@@ -72,14 +74,18 @@ if ('serviceWorker' in navigator && import.meta.env.PROD) {
         if (newWorker) {
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              console.log('New content available, please refresh.');
+              if (import.meta.env.DEV) {
+                console.log('New content available, please refresh.');
+              }
             }
           });
         }
       });
       
     } catch (registrationError) {
-      console.log('SW registration failed: ', registrationError);
+      if (import.meta.env.DEV) {
+        console.log('SW registration failed: ', registrationError);
+      }
     }
   });
 }

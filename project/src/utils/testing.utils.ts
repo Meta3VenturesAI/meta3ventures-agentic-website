@@ -39,10 +39,10 @@ export const createMockFetch = (responses: Record<string, unknown>) => {
     }
 
     return Promise.resolve({
-      ok: response.ok ?? true,
-      status: response.status ?? 200,
-      json: () => Promise.resolve(response.data),
-      text: () => Promise.resolve(JSON.stringify(response.data)),
+      ok: (response as any).ok ?? true,
+      status: (response as any).status ?? 200,
+      json: () => Promise.resolve((response as any).data),
+      text: () => Promise.resolve(JSON.stringify((response as any).data)),
     });
   };
 };
@@ -121,10 +121,10 @@ export const measurePerformance = async (fn: () => Promise<unknown> | unknown) =
   return {
     result,
     duration: end - start,
-    memory: (performance as unknown).memory ? {
-      used: (performance as unknown).memory.usedJSHeapSize,
-      total: (performance as unknown).memory.totalJSHeapSize,
-      limit: (performance as unknown).memory.jsHeapSizeLimit
+    memory: (performance as any).memory ? {
+      used: (performance as any).memory.usedJSHeapSize,
+      total: (performance as any).memory.totalJSHeapSize,
+      limit: (performance as any).memory.jsHeapSizeLimit
     } : null
   };
 };

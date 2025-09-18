@@ -1,0 +1,117 @@
+{
+  "startTime": "2025-09-18T06:50:09.151Z",
+  "tests": [
+    {
+      "testName": "Development Server",
+      "status": "PASS",
+      "details": "Server running on port 5173 (200)",
+      "duration": 11,
+      "timestamp": "2025-09-18T06:50:09.164Z"
+    },
+    {
+      "testName": "Admin Dashboard Access",
+      "status": "PASS",
+      "details": "Admin dashboard accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:09.175Z"
+    },
+    {
+      "testName": "Ollama LLM Provider",
+      "status": "PASS",
+      "details": "Ollama API accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:09.185Z"
+    },
+    {
+      "testName": "Build Process",
+      "status": "PASS",
+      "details": "Application builds successfully",
+      "duration": 8836,
+      "timestamp": "2025-09-18T06:50:18.021Z"
+    },
+    {
+      "testName": "TypeScript Compilation",
+      "status": "FAIL",
+      "details": "TypeScript errors: Command failed: npx tsc --noEmit",
+      "duration": 4660,
+      "timestamp": "2025-09-18T06:50:22.681Z"
+    },
+    {
+      "testName": "Unit Tests",
+      "status": "PASS",
+      "details": "All unit tests pass",
+      "duration": 629,
+      "timestamp": "2025-09-18T06:50:23.311Z"
+    },
+    {
+      "testName": "Environment Configuration",
+      "status": "PASS",
+      "details": "All 5 required variables present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.312Z"
+    },
+    {
+      "testName": "Core Components",
+      "status": "PASS",
+      "details": "All 5 core components present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.312Z"
+    },
+    {
+      "testName": "LLM Providers",
+      "status": "PASS",
+      "details": "All 5 LLM providers present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.313Z"
+    },
+    {
+      "testName": "Security Features",
+      "status": "PASS",
+      "details": "Advanced security utilities implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.313Z"
+    },
+    {
+      "testName": "Admin Functionality",
+      "status": "FAIL",
+      "details": "Admin tests failed: Command failed: node test-admin-functionality.cjs\nnode:internal/modules/cjs/loader:1143\n  throw err;\n  ^\n\nError: Cannot find module '/Users/lironlanger/Desktop/meta3ventures-agentic-website/project/test-admin-functionality.cjs'\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)\n    at Module._load (node:internal/modules/cjs/loader:981:27)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)\n    at node:internal/main/run_main_module:28:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v18.20.6\n",
+      "duration": 49,
+      "timestamp": "2025-09-18T06:50:23.362Z"
+    },
+    {
+      "testName": "File Upload System",
+      "status": "PASS",
+      "details": "All 5 file upload features present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.363Z"
+    },
+    {
+      "testName": "Data Management",
+      "status": "FAIL",
+      "details": "Missing features: getFormSubmissions, validateFormData",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.363Z"
+    },
+    {
+      "testName": "Authentication System",
+      "status": "PASS",
+      "details": "All 5 authentication features present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.363Z"
+    },
+    {
+      "testName": "Agent System",
+      "status": "PASS",
+      "details": "All 4 agent system features present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:23.363Z"
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "passed": 12,
+    "failed": 3,
+    "successRate": "80.00"
+  },
+  "endTime": "2025-09-18T06:50:23.364Z"
+}

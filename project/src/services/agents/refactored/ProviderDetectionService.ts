@@ -68,36 +68,36 @@ export class ProviderDetectionService {
 
     try {
       // Special handling for fallback provider
-      if (config.id === 'fallback') {
+      if ((config as any).id === 'fallback') {
         return {
-          id: config.id,
-          name: config.name,
+          id: (config as any).id,
+          name: (config as any).name,
           available: true,
           configured: true,
           latency: 50, // Simulated latency
-          type: config.type,
-          priority: config.priority
+          type: (config as any).type,
+          priority: (config as any).priority
         };
       }
 
       // Test cloud providers by checking API key
-      if (config.type === 'cloud') {
-        const hasApiKey = !!(import.meta.env as unknown)[config.envKey];
+      if ((config as any).type === 'cloud') {
+        const hasApiKey = !!(import.meta.env as any)[(config as any).envKey];
         return {
-          id: config.id,
-          name: config.name,
+          id: (config as any).id,
+          name: (config as any).name,
           available: hasApiKey,
           configured: hasApiKey,
           latency: hasApiKey ? 100 + Math.random() * 200 : undefined,
           error: hasApiKey ? undefined : 'API key not configured',
-          type: config.type,
-          priority: hasApiKey ? config.priority : config.priority - 50
+          type: (config as any).type,
+          priority: hasApiKey ? (config as any).priority : (config as any).priority - 50
         };
       }
 
       // Test local providers via health check
-      if (config.type === 'local') {
-        const response = await fetch(`${config.endpoint}?provider=${config.id}&action=health`, {
+      if ((config as any).type === 'local') {
+        const response = await fetch(`${(config as any).endpoint}?provider=${(config as any).id}&action=health`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
@@ -107,48 +107,48 @@ export class ProviderDetectionService {
           const latency = Date.now() - startTime;
           
           return {
-            id: config.id,
-            name: config.name,
+            id: (config as any).id,
+            name: (config as any).name,
             available: data.success || false,
             configured: data.configured || false,
             latency: data.success ? latency : undefined,
             error: data.success ? undefined : data.error || 'Health check failed',
-            type: config.type,
-            priority: data.success ? config.priority : config.priority - 30
+            type: (config as any).type,
+            priority: data.success ? (config as any).priority : (config as any).priority - 30
           };
         } else {
           return {
-            id: config.id,
-            name: config.name,
+            id: (config as any).id,
+            name: (config as any).name,
             available: false,
             configured: false,
             error: `HTTP ${response.status}`,
-            type: config.type,
-            priority: config.priority - 30
+            type: (config as any).type,
+            priority: (config as any).priority - 30
           };
         }
       }
 
       // Default case
       return {
-        id: config.id,
-        name: config.name,
+        id: (config as any).id,
+        name: (config as any).name,
         available: false,
         configured: false,
         error: 'Unknown provider type',
-        type: config.type,
-        priority: config.priority - 50
+        type: (config as any).type,
+        priority: (config as any).priority - 50
       };
 
     } catch (error) {
       return {
-        id: config.id,
-        name: config.name,
+        id: (config as any).id,
+        name: (config as any).name,
         available: false,
         configured: false,
         error: error instanceof Error ? error.message : 'Unknown error',
-        type: config.type,
-        priority: config.priority - 50
+        type: (config as any).type,
+        priority: (config as any).priority - 50
       };
     }
   }

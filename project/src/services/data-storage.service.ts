@@ -63,8 +63,9 @@ export class DataStorageService {
   // Store data locally with structure
   private storeLocally(key: string, data: unknown): void {
     const stored = JSON.parse(localStorage.getItem(key) || '[]');
+    const dataToStore = typeof data === 'object' && data !== null ? data as Record<string, any> : {};
     stored.push({
-      ...data,
+      ...dataToStore,
       timestamp: new Date().toISOString(),
       id: this.generateId()
     });
@@ -134,7 +135,7 @@ export class DataStorageService {
   private exportToCSV(data: unknown): void {
     const csvData = JSON.parse(localStorage.getItem('csv_export_queue') || '[]');
     csvData.push({
-      ...data,
+      ...(typeof data === 'object' && data !== null ? data : {}),
       exported_at: new Date().toISOString()
     });
     localStorage.setItem('csv_export_queue', JSON.stringify(csvData));
@@ -171,7 +172,7 @@ export class DataStorageService {
   // Get submissions by specific form type
   async getSubmissionsByType(type: FormType): Promise<any[]> {
     const stored = JSON.parse(localStorage.getItem('form_submissions') || '[]');
-    return stored.filter((s: unknown) => s.type === type);
+    return stored.filter((s: any) => s.type === type);
   }
   
   // Get analytics summary
@@ -205,19 +206,19 @@ export class DataStorageService {
     
     // Convert to CSV format
     const headers = ['Date', 'Type', 'Name', 'Email', 'Company', 'Message', 'Additional Data'];
-    const rows = filtered.map((item: unknown) => [
+    const rows = filtered.map((item: any) => [
       item.timestamp || item.created_at,
       item.type,
-      item.data.name || item.data.founderName || '',
-      item.data.email || '',
-      item.data.company || item.data.companyName || '',
-      item.data.message || item.data.pitch || '',
-      JSON.stringify(item.data)
+      item.data?.name || item.data?.founderName || '',
+      item.data?.email || '',
+      item.data?.company || item.data?.companyName || '',
+      item.data?.message || item.data?.pitch || '',
+      JSON.stringify(item.data || {})
     ]);
     
     const csvContent = [
       headers.join(','),
-      ...rows.map((row: unknown[]) => row.map((cell: unknown) => `"${cell}"`).join(','))
+      ...rows.map((row: any[]) => row.map((cell: any) => `"${cell}"`).join(','))
     ].join('\n');
     
     // Create download link
@@ -244,7 +245,7 @@ export class DataStorageService {
     
     keys.forEach(key => {
       const data = JSON.parse(localStorage.getItem(key) || '[]');
-      const filtered = data.filter((item: unknown) => {
+      const filtered = data.filter((item: any) => {
         const itemDate = new Date(item.timestamp || item.created_at);
         return itemDate > cutoffDate;
       });

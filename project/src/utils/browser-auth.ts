@@ -101,8 +101,8 @@ export class BrowserAuthService {
 
     } catch (error: unknown) {
       auditLogger.logAuth(AuditEvents.LOGIN_FAILURE, {
-        error: error.message,
-        stack: error.stack,
+        error: (error as any)?.message || 'Unknown error',
+        stack: (error as any)?.stack || '',
         clientId
       }, 'failure');
       

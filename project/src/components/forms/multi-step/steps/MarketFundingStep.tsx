@@ -201,13 +201,14 @@ const MarketFundingStep: React.FC<StepComponentProps> = ({
         <div>
           <FileUploadZone
             id="pitchDeck"
-            label="Pitch Deck"
+            label="Pitch Deck *"
             accept={['.pdf', '.ppt', '.pptx']}
             maxSize={10}
             maxFiles={1}
             value={formData.pitchDeck}
             onChange={handleFileChange('pitchDeck')}
             helperText="Upload your pitch deck (PDF or PowerPoint, max 10MB)"
+            required={true}
           />
         </div>
         
@@ -221,6 +222,7 @@ const MarketFundingStep: React.FC<StepComponentProps> = ({
             value={formData.businessPlan}
             onChange={handleFileChange('businessPlan')}
             helperText="Upload your business plan if available (PDF or Word, max 10MB)"
+            required={false}
           />
         </div>
       </div>

@@ -52,9 +52,9 @@ export class ExternalToolAdapter implements AgentTool {
     const properties: unknown = {};
     const required: string[] = [];
 
-    if (this.externalTool.parameters && this.externalTool.parameters.properties) {
-      for (const [key, param] of Object.entries(this.externalTool.parameters.properties)) {
-        const paramObj = param as unknown; // Type assertion for external tool parameters
+    if (this.externalTool.parameters && (this.externalTool.parameters as any).properties) {
+      for (const [key, param] of Object.entries((this.externalTool.parameters as any).properties)) {
+        const paramObj = param as any; // Type assertion for external tool parameters
         properties[key] = {
           type: paramObj.type || 'string',
           description: paramObj.description || '',
@@ -70,7 +70,7 @@ export class ExternalToolAdapter implements AgentTool {
 
     return {
       type: 'object',
-      properties,
+      properties: properties as { [key: string]: { type: "string" | "number" | "boolean" | "object" | "array" | "integer"; description: string; required?: boolean; default?: unknown; }; },
       required
     };
   }

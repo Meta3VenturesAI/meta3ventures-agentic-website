@@ -162,7 +162,7 @@ export class AdminTools {
         totalDocuments: metrics.ragSystem.totalDocuments,
         totalTools: metrics.tools.totalTools
       });
-    } catch {
+    } catch (error) {
       console.error('Error collecting metrics:', error);
     }
   }
@@ -213,7 +213,7 @@ export class AdminTools {
     
     for (const provider of providers) {
       try {
-        const isAvailable = await provider.isAvailable();
+        const isAvailable = await (provider as any).isAvailable();
         if (isAvailable) activeCount++;
       } catch (error) {
         // Provider not available
@@ -229,9 +229,9 @@ export class AdminTools {
     
     for (const provider of providers) {
       try {
-        health[provider.id] = await provider.isAvailable();
+        health[(provider as any).id] = await (provider as any).isAvailable();
       } catch (error) {
-        health[provider.id] = false;
+        health[(provider as any).id] = false;
       }
     }
     

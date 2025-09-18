@@ -69,11 +69,11 @@ class PerformanceCollector {
         for (const entry of list.getEntries()) {
           this.recordMetric({
             name: 'layout_shift',
-            value: (entry as unknown).value,
+            value: (entry as any).value,
             unit: 'score',
             timestamp: new Date(),
             context: {
-              hadRecentInput: (entry as unknown).hadRecentInput
+              hadRecentInput: (entry as any).hadRecentInput
             }
           });
         }
@@ -323,11 +323,11 @@ export const analyzeBundleSize = () => {
 
 // Memory usage monitoring
 export const getMemoryUsage = () => {
-  if (typeof window === 'undefined' || !(performance as unknown).memory) {
+  if (typeof window === 'undefined' || !(performance as any).memory) {
     return null;
   }
 
-  const memory = (performance as unknown).memory;
+  const memory = (performance as any).memory;
   return {
     usedJSHeapSize: memory.usedJSHeapSize,
     totalJSHeapSize: memory.totalJSHeapSize,

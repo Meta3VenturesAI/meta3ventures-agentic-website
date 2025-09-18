@@ -401,8 +401,8 @@ class PerformanceMonitor {
    */
   private getCurrentMemoryUsage(): number {
     if ('memory' in performance) {
-      const memory = (performance as unknown).memory;
-      return memory.usedJSHeapSize || 0;
+      const memory = (performance as any).memory;
+      return memory?.usedJSHeapSize || 0;
     }
     return 0;
   }

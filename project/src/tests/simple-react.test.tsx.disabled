@@ -1,0 +1,30 @@
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+
+// Mock React DOM before any imports
+vi.mock('react-dom', () => ({
+  createRoot: vi.fn(() => ({
+    render: vi.fn(),
+    unmount: vi.fn()
+  })),
+  render: vi.fn(),
+  unmountComponentAtNode: vi.fn(),
+  findDOMNode: vi.fn(),
+  hydrate: vi.fn(),
+  flushSync: vi.fn(),
+  createPortal: vi.fn(),
+  version: '18.0.0'
+}));
+
+// Simple component for testing
+const SimpleComponent = () => <div data-testid="simple-component">Simple Component</div>;
+
+describe('Simple React Test', () => {
+  it('should render a simple component', () => {
+    render(<SimpleComponent />);
+    
+    const component = screen.getByTestId('simple-component');
+    expect(component).toBeInTheDocument();
+    expect(component).toHaveTextContent('Simple Component');
+  });
+});

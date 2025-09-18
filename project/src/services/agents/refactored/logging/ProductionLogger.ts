@@ -113,7 +113,7 @@ export class ProductionLogger {
         name: error.name,
         message: error.message,
         stack: error.stack,
-        code: (error as unknown).code
+        code: (error as any).code
       } : undefined,
       performance,
       metadata: {
@@ -191,7 +191,7 @@ export class ProductionLogger {
       // Remote logging would be implemented here
       // For now, we'll just log to console
       console.log('Remote logging not implemented yet');
-    } catch {
+    } catch (error) {
       console.error('Failed to send log to remote endpoint:', error);
     }
   }
@@ -286,7 +286,7 @@ export class ProductionLogger {
       userId,
       sessionId,
       component: 'user'
-    }, { interactionType, ...data });
+    }, { interactionType, ...(data as any) });
   }
 
   logSystemEvent(

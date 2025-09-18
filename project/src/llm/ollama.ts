@@ -67,7 +67,9 @@ export class OllamaProvider implements LLMProvider {
       const response = await this.makeRequest('/api/tags', {});
       return Array.isArray(response.models) && response.models.length > 0;
     } catch (error) {
-      console.warn('Ollama health check failed:', error);
+      if (import.meta.env.DEV) {
+        console.warn('Ollama health check failed:', error);
+      }
       return false;
     }
   }
@@ -95,7 +97,7 @@ export class OllamaProvider implements LLMProvider {
 
   private prepareTools(tools: unknown[]): unknown[] {
     // Convert our tool format to Ollama format
-    return tools.map(tool => ({
+    return tools.map((tool: any) => ({
       type: tool.type,
       function: {
         name: tool.function.name,
@@ -106,14 +108,15 @@ export class OllamaProvider implements LLMProvider {
   }
 
   private parseUsage(response: unknown): LLMUsage | undefined {
-    if (!response.prompt_eval_count && !response.eval_count) {
+    const resp = response as any;
+    if (!resp.prompt_eval_count && !resp.eval_count) {
       return undefined;
     }
 
     return {
-      prompt_tokens: response.prompt_eval_count || 0,
-      completion_tokens: response.eval_count || 0,
-      total_tokens: (response.prompt_eval_count || 0) + (response.eval_count || 0)
+      prompt_tokens: resp.prompt_eval_count || 0,
+      completion_tokens: resp.eval_count || 0,
+      total_tokens: (resp.prompt_eval_count || 0) + (resp.eval_count || 0)
     };
   }
 
@@ -122,7 +125,7 @@ export class OllamaProvider implements LLMProvider {
       return undefined;
     }
 
-    return toolCalls.map((call, index) => ({
+    return toolCalls.map((call: any, index) => ({
       id: `call_${index}`,
       type: 'function',
       function: {
@@ -133,10 +136,11 @@ export class OllamaProvider implements LLMProvider {
   }
 
   private parseFinishReason(response: unknown): 'stop' | 'tool_calls' | 'length' | 'content_filter' {
-    if (response.message?.tool_calls?.length > 0) {
+    const resp = response as any;
+    if (resp.message?.tool_calls?.length > 0) {
       return 'tool_calls';
     }
-    if (response.eval_count >= (response.num_predict || 4096)) {
+    if (resp.eval_count >= (resp.num_predict || 4096)) {
       return 'length';
     }
     return 'stop';
@@ -175,14 +179,15 @@ export class OllamaProvider implements LLMProvider {
       return error;
     }
 
-    if (error.name === 'AbortError') {
+    const err = error as any;
+    if (err.name === 'AbortError') {
       return new LLMTimeoutError('Ollama', this.config.timeout!);
     }
 
     return new LLMError(
-      error.message || 'Unknown error occurred',
+      err.message || 'Unknown error occurred',
       'UNKNOWN_ERROR',
-      error.status || 500,
+      err.status || 500,
       'Ollama'
     );
   }

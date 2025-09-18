@@ -158,7 +158,7 @@ Let's start by understanding where you are in your fundraising journey.`,
         content: agentResponse.content,
         timestamp: new Date(),
         stage: 'preparation',
-        attachments: agentResponse.attachments?.map((att: unknown) => ({
+        attachments: agentResponse.attachments?.map((att: any) => ({
           type: att.type as 'document' | 'checklist' | 'template' | 'calculator' | 'resource',
           title: att.title,
           description: att.content,
@@ -172,7 +172,7 @@ Let's start by understanding where you are in your fundraising journey.`,
             content: 'Powered by AI - responses are tailored to your specific fundraising context and market conditions.'
           }
         ],
-        actions: agentResponse.suggestedActions?.map((action: unknown) => ({
+        actions: agentResponse.suggestedActions?.map((action: any) => ({
           label: action.label,
           action: action.action,
           primary: false,

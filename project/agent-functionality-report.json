@@ -1,0 +1,411 @@
+{
+  "startTime": "2025-09-18T06:51:01.460Z",
+  "tests": [
+    {
+      "category": "AGENT_COMPONENTS",
+      "testName": "Agents Component",
+      "status": "PASS",
+      "details": "Agents.tsx component exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "File: AdminAgentOrchestrator.ts",
+      "status": "PASS",
+      "details": "File exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "File: ProviderDetectionService.ts",
+      "status": "PASS",
+      "details": "File exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "File: OpenSourceLLMService.ts",
+      "status": "PASS",
+      "details": "File exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "File: AgentAuthGuard.tsx",
+      "status": "PASS",
+      "details": "File exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: agentCatalog",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-research",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-investment",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: venture-launch",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: competitive-intelligence",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-marketing",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-financial",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-legal",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.462Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-support",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.463Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: meta3-local",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.463Z"
+    },
+    {
+      "category": "AGENT_CATALOG",
+      "testName": "Feature: general-conversation",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.463Z"
+    },
+    {
+      "category": "AGENT_AUTH",
+      "testName": "Agent Authentication Guard",
+      "status": "PASS",
+      "details": "AgentAuthGuard.tsx exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.463Z"
+    },
+    {
+      "category": "AGENT_ROUTING",
+      "testName": "Agents Route Status",
+      "status": "PASS",
+      "details": "Agents route is active",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.463Z"
+    },
+    {
+      "category": "HOMEPAGE_INTEGRATION",
+      "testName": "Agent Mentions on Homepage",
+      "status": "PASS",
+      "details": "Agents mentioned on homepage",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.463Z"
+    },
+    {
+      "category": "AGENT_ACCESS",
+      "testName": "Homepage Accessibility",
+      "status": "PASS",
+      "details": "Homepage accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.474Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "Orchestrator: processMessage",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.474Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "Orchestrator: performSystemDiagnostics",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.474Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "Orchestrator: getAvailableAgents",
+      "status": "FAIL",
+      "details": "Feature not found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.474Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "Orchestrator: testAgent",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.474Z"
+    },
+    {
+      "category": "AGENT_SYSTEM",
+      "testName": "Orchestrator: getAgentStats",
+      "status": "FAIL",
+      "details": "Feature not found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.474Z"
+    },
+    {
+      "category": "LLM_PROVIDERS",
+      "testName": "LLM Provider Integration",
+      "status": "PASS",
+      "details": "5/5 providers working",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_TESTING",
+      "testName": "Testing Feature: handleTestAgent",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_TESTING",
+      "testName": "Testing Feature: testResults",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_TESTING",
+      "testName": "Testing Feature: isLoading",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_TESTING",
+      "testName": "Testing Feature: exportResults",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_TESTING",
+      "testName": "Testing Feature: clearResults",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_TESTING",
+      "testName": "Testing Feature: copyToClipboard",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_CATEGORIES",
+      "testName": "Category: core",
+      "status": "PASS",
+      "details": "Category implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_CATEGORIES",
+      "testName": "Category: specialized",
+      "status": "PASS",
+      "details": "Category implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_CATEGORIES",
+      "testName": "Category: support",
+      "status": "PASS",
+      "details": "Category implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_SPECIALTIES",
+      "testName": "Agent Specialties",
+      "status": "PASS",
+      "details": "10/10 specialties found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_EXAMPLES",
+      "testName": "Example Queries",
+      "status": "PASS",
+      "details": "10/10 example queries found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.475Z"
+    },
+    {
+      "category": "AGENT_PERFORMANCE",
+      "testName": "Performance Metrics",
+      "status": "PASS",
+      "details": "5/5 performance features found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.476Z"
+    },
+    {
+      "category": "AGENT_UI",
+      "testName": "UI Components",
+      "status": "PASS",
+      "details": "11/11 UI components found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:01.476Z"
+    }
+  ],
+  "summary": {
+    "total": 39,
+    "passed": 37,
+    "failed": 2,
+    "successRate": "94.87"
+  },
+  "categories": {
+    "AGENT_COMPONENTS": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_SYSTEM": {
+      "total": 9,
+      "passed": 0,
+      "failed": 0,
+      "pass": null,
+      "fail": null
+    },
+    "AGENT_CATALOG": {
+      "total": 11,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_AUTH": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_ROUTING": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "HOMEPAGE_INTEGRATION": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_ACCESS": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "LLM_PROVIDERS": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_TESTING": {
+      "total": 6,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_CATEGORIES": {
+      "total": 3,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_SPECIALTIES": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_EXAMPLES": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_PERFORMANCE": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    },
+    "AGENT_UI": {
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "pass": null
+    }
+  },
+  "endTime": "2025-09-18T06:51:01.476Z"
+}

@@ -125,7 +125,7 @@ class OllamaProvider implements LLMProvider {
 
     } catch (error: unknown) {
       console.error('Ollama generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -223,7 +223,7 @@ class GroqProvider implements LLMProvider {
 
     } catch (error: unknown) {
       console.error('Groq generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -332,7 +332,7 @@ class HuggingFaceProvider implements LLMProvider {
 
     } catch (error: unknown) {
       console.error('Hugging Face generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -431,7 +431,7 @@ class OpenAIProvider implements LLMProvider {
       };
     } catch (error: unknown) {
       console.error('OpenAI generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -518,7 +518,7 @@ class AnthropicProvider implements LLMProvider {
       };
     } catch (error: unknown) {
       console.error('Anthropic generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -606,7 +606,7 @@ class CohereProvider implements LLMProvider {
       };
     } catch (error: unknown) {
       console.error('Cohere generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -715,7 +715,7 @@ class ReplicateProvider implements LLMProvider {
       };
     } catch (error: unknown) {
       console.error('Replicate generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 
@@ -819,7 +819,7 @@ class DeepSeekProvider implements LLMProvider {
       };
     } catch (error: unknown) {
       console.error('DeepSeek generation error:', error);
-      throw new Error(`Failed to generate response: ${error.message}`);
+      throw new Error(`Failed to generate response: ${(error as any).message}`);
     }
   }
 }
@@ -1015,8 +1015,8 @@ export class LLMService {
     } catch (error: unknown) {
       auditLogger.logLLMInteraction(providerId, provider.supportedModels[0] || 'unknown', {
         action: 'test_provider',
-        error: error.message,
-        stack: error.stack
+        error: (error as any).message,
+        stack: (error as any).stack
       }, 'failure');
       return false;
     }
@@ -1134,7 +1134,7 @@ export class LLMService {
       return { success: true, latency };
 
     } catch (error: unknown) {
-      return { success: false, error: error.message };
+      return { success: false, error: (error as any).message };
     }
   }
 
@@ -1348,7 +1348,7 @@ export class LLMService {
         
         results[id] = { available, latency };
       } catch (error: unknown) {
-        results[id] = { available: false, error: error.message };
+        results[id] = { available: false, error: (error as any).message };
       }
     }
 

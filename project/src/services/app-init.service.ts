@@ -60,9 +60,9 @@ class AppInitService {
       this.preloadCriticalResources();
 
       // Set app metadata in window object for debugging
-      (window as unknown).__APP_VERSION__ = appConfig.version;
-      (window as unknown).__BUILD_TIME__ = appConfig.buildTime;
-      (window as unknown).__ENVIRONMENT__ = appConfig.environment;
+      (window as any).__APP_VERSION__ = appConfig.version;
+      (window as any).__BUILD_TIME__ = appConfig.buildTime;
+      (window as any).__ENVIRONMENT__ = appConfig.environment;
 
       this.initialized = true;
       console.log('✅ App initialization complete');
@@ -198,9 +198,9 @@ class AppInitService {
       script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
       document.head.appendChild(script);
 
-      (window as unknown).dataLayer = (window as unknown).dataLayer || [];
+      (window as any).dataLayer = (window as any).dataLayer || [];
       function gtag(...args: unknown[]) {
-        (window as unknown).dataLayer.push(args);
+        (window as any).dataLayer.push(args);
       }
       gtag('js', new Date());
       gtag('config', gaId);

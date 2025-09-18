@@ -6,6 +6,10 @@ describe('AuthService', () => {
     // Clear localStorage before each test
     localStorage.clear();
     vi.clearAllMocks();
+    
+    // Set up environment variables
+    process.env.VITE_ADMIN_PASSWORD = 'test-password';
+    process.env.VITE_ADMIN_PASSWORD_HASH = '';
   });
 
   afterEach(() => {
@@ -14,9 +18,6 @@ describe('AuthService', () => {
 
   describe('Authentication', () => {
     it('should successfully authenticate with valid password', async () => {
-      // Mock environment variable
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       const result = await authService.loginWithPassword('test-password');
       
       expect(result.success).toBe(true);
@@ -33,8 +34,6 @@ describe('AuthService', () => {
     });
 
     it('should maintain session after successful login', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       await authService.loginWithPassword('test-password');
       
       expect(authService.isAuthenticated()).toBe(true);
@@ -42,8 +41,6 @@ describe('AuthService', () => {
     });
 
     it('should clear session on logout', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       await authService.loginWithPassword('test-password');
       expect(authService.isAuthenticated()).toBe(true);
       
@@ -56,8 +53,6 @@ describe('AuthService', () => {
 
   describe('Session Management', () => {
     it('should validate active session', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       await authService.loginWithPassword('test-password');
       
       const isValid = await authService.validateSession();
@@ -81,34 +76,35 @@ describe('AuthService', () => {
 
   describe('Role Management', () => {
     it('should correctly identify admin role', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       await authService.loginWithPassword('test-password');
       
       expect(authService.isAdmin()).toBe(true);
     });
 
     it('should correctly identify non-admin role', async () => {
-      // Mock Supabase login response
-      const mockSupabaseResponse = {
-        data: {
-          user: { id: 'user-123', email: 'user@example.com' },
-          session: { access_token: 'token-123' }
-        },
-        error: null
+      // Clear any existing session
+      await authService.logout();
+      
+      // Test with no user logged in
+      expect(authService.isAdmin()).toBe(false);
+      
+      // Test with a non-admin user (simulate by setting currentUser directly)
+      const nonAdminUser = {
+        id: 'user-123',
+        role: 'user' as const,
+        lastLogin: new Date()
       };
       
-      // This would need proper mocking of Supabase
-      // For now, we'll test the logic directly
+      // Manually set a non-admin user for testing
+      (authService as any).currentUser = nonAdminUser;
       expect(authService.isAdmin()).toBe(false);
     });
   });
 
   describe('Security', () => {
     it('should not expose password in stored session', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
-      await authService.loginWithPassword('test-password');
+      const result = await authService.loginWithPassword('test-password');
+      expect(result.success).toBe(true);
       
       const storedSession = localStorage.getItem('auth_session');
       expect(storedSession).toBeDefined();
@@ -116,8 +112,6 @@ describe('AuthService', () => {
     });
 
     it('should generate unique session tokens', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       const result1 = await authService.loginWithPassword('test-password');
       await authService.logout();
       const result2 = await authService.loginWithPassword('test-password');
@@ -127,8 +121,6 @@ describe('AuthService', () => {
     });
 
     it('should log authentication events', async () => {
-      vi.stubEnv('VITE_ADMIN_PASSWORD', 'test-password');
-      
       await authService.loginWithPassword('test-password');
       
       const events = JSON.parse(localStorage.getItem('auth_events') || '[]');

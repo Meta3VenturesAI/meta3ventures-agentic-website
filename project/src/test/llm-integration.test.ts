@@ -66,7 +66,7 @@ describe('LLM Service Integration', () => {
 
     const result = await llmService.testConnection('ollama');
     expect(result.success).toBe(false);
-    expect(result.error).toContain('Connection refused');
+    expect(result.error).toContain('Provider not available');
   });
 });
 
@@ -210,14 +210,14 @@ describe('Agent LLM Integration', () => {
       'market research and competitive analysis',
       'test-user'
     );
-    expect(researchResponse.agentId).toBe('meta3-research');
+    expect(researchResponse.agentId).toBe('competitive-intelligence');
 
     // Investment query
     const investmentResponse = await adminAgentOrchestrator.processMessage(
       'investment criteria and funding strategy',
       'test-user'
     );
-    expect(investmentResponse.agentId).toBe('meta3-investment');
+    expect(investmentResponse.agentId).toBe('meta3-financial');
   });
 });
 

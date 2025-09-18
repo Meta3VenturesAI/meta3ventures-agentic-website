@@ -189,7 +189,7 @@ class BackupService {
         const nextTrigger = this.backupQueue.values().next().value;
         if (nextTrigger) {
           this.backupQueue.delete(nextTrigger);
-          this.performBackup(nextTrigger as unknown);
+          this.performBackup(nextTrigger as "event" | "manual" | "automated");
         }
       }
     }
@@ -232,8 +232,8 @@ class BackupService {
       await this.clearCurrentData();
       
       // Restore submissions
-      if (data.submissions && Array.isArray(data.submissions)) {
-        for (const submission of data.submissions) {
+      if ((data as any).submissions && Array.isArray((data as any).submissions)) {
+        for (const submission of (data as any).submissions) {
           await dataStorage.storeFormSubmission(submission);
         }
       }
@@ -362,7 +362,7 @@ class BackupService {
   
   private async decryptData(data: unknown): Promise<any> {
     // Decrypt data
-    return JSON.parse(atob(data));
+    return JSON.parse(atob(data as string));
   }
   
   private async calculateChecksum(data: string): Promise<string> {

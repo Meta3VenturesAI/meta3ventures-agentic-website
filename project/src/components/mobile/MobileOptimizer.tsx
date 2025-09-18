@@ -58,7 +58,7 @@ const MobileOptimizer: React.FC = () => {
       // Get connection info
       let connectionType = 'unknown';
       if ('connection' in navigator) {
-        const connection = (navigator as unknown).connection;
+        const connection = (navigator as any).connection;
         connectionType = connection.effectiveType || connection.type || 'unknown';
       }
 
@@ -167,11 +167,11 @@ const MobileOptimizer: React.FC = () => {
     if (!('screen' in window) || !('orientation' in window.screen)) return;
 
     try {
-      const screen = window.screen as unknown;
+      const screen = window.screen as any;
       if (optimization.orientationLock) {
-        await screen.orientation.lock('portrait');
+        await screen.orientation?.lock('portrait');
       } else {
-        screen.orientation.unlock();
+        screen.orientation?.unlock();
       }
     } catch (error) {
       console.warn('Orientation lock not supported:', error);

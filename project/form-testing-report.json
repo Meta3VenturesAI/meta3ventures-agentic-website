@@ -1,0 +1,1366 @@
+{
+  "startTime": "2025-09-18T06:50:57.434Z",
+  "tests": [
+    {
+      "formType": "contact",
+      "testName": "Contact Component",
+      "status": "PASS",
+      "details": "Contact.tsx exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.435Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Formspree Integration",
+      "status": "PASS",
+      "details": "Formspree form ID configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.435Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Required Field: firstName",
+      "status": "PASS",
+      "details": "Field is required",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.435Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Required Field: lastName",
+      "status": "PASS",
+      "details": "Field is required",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.435Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Required Field: email",
+      "status": "PASS",
+      "details": "Field is required",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.435Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Required Field: subject",
+      "status": "PASS",
+      "details": "Field is required",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.435Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Required Field: message",
+      "status": "PASS",
+      "details": "Field is required",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Validation: disabled={state.submitting}",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Validation: toast.success",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Validation: toast.error",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Validation: state.succeeded",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Validation: state.errors",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Form Field: First Name",
+      "status": "PASS",
+      "details": "Field present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Form Field: Last Name",
+      "status": "PASS",
+      "details": "Field present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Form Field: Email",
+      "status": "PASS",
+      "details": "Field present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Form Field: Company",
+      "status": "PASS",
+      "details": "Field present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Form Field: Subject",
+      "status": "PASS",
+      "details": "Field present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Form Field: Message",
+      "status": "PASS",
+      "details": "Field present",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Subject Option: AI Consultation",
+      "status": "PASS",
+      "details": "Option available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Subject Option: Partnership Opportunity",
+      "status": "PASS",
+      "details": "Option available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Subject Option: Investment Inquiry",
+      "status": "PASS",
+      "details": "Option available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Subject Option: General Inquiry",
+      "status": "PASS",
+      "details": "Option available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "contact",
+      "testName": "Subject Option: Other",
+      "status": "PASS",
+      "details": "Option available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.436Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Apply Page",
+      "status": "PASS",
+      "details": "Apply.tsx exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Multi-Step Application",
+      "status": "PASS",
+      "details": "MultiStepApplication.tsx exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Formspree Integration",
+      "status": "PASS",
+      "details": "Formspree apply key configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step Component: CompanyInfoStep",
+      "status": "PASS",
+      "details": "Step component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step Component: TechnologyStep",
+      "status": "PASS",
+      "details": "Step component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step Component: MarketFundingStep",
+      "status": "PASS",
+      "details": "Step component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step Component: TeamContactStep",
+      "status": "PASS",
+      "details": "Step component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Form Data: useMultiStepForm",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Form Data: formData",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Form Data: handleFieldChange",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Form Data: goToNextStep",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Form Data: goToPreviousStep",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Data Storage Integration",
+      "status": "PASS",
+      "details": "Data storage integrated",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step File: CompanyInfoStep.tsx",
+      "status": "PASS",
+      "details": "Step file exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step File: TechnologyStep.tsx",
+      "status": "PASS",
+      "details": "Step file exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step File: MarketFundingStep.tsx",
+      "status": "PASS",
+      "details": "Step file exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "apply",
+      "testName": "Step File: TeamContactStep.tsx",
+      "status": "PASS",
+      "details": "Step file exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.437Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Footer Component",
+      "status": "PASS",
+      "details": "Footer.tsx exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Formspree Integration",
+      "status": "PASS",
+      "details": "Formspree newsletter key configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Newsletter Feature: type=\"email\"",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Newsletter Feature: name=\"email\"",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Newsletter Feature: required",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Newsletter Feature: placeholder=\"Enter your email\"",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Newsletter Feature: Newsletter",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Validation: disabled={state.submitting}",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Validation: toast.success",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Validation: toast.error",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Validation: state.succeeded",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "newsletter",
+      "testName": "Validation: state.errors",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Admin Dashboard",
+      "status": "PASS",
+      "details": "AdminDashboard.tsx exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Data Storage Integration",
+      "status": "PASS",
+      "details": "Data storage integrated",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Feature: total_submissions",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Feature: by_type",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Feature: recent_submissions",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Feature: total_events",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Feature: unique_sessions",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Feature: getAnalyticsSummary",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Visualization: BarChart3",
+      "status": "PASS",
+      "details": "Component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Visualization: PieChart",
+      "status": "PASS",
+      "details": "Component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Visualization: TrendingUp",
+      "status": "PASS",
+      "details": "Component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Visualization: Database",
+      "status": "PASS",
+      "details": "Component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Visualization: Users",
+      "status": "PASS",
+      "details": "Component imported",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Filtering: Filter",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Filtering: Search",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Filtering: dateRange",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Filtering: industry",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Filtering: fundingRange",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Filtering: companyStage",
+      "status": "PASS",
+      "details": "Feature implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Data Storage Service",
+      "status": "PASS",
+      "details": "Data storage service exists",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Method: getAnalyticsSummary",
+      "status": "PASS",
+      "details": "Method implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Method: getFormSubmissions",
+      "status": "FAIL",
+      "details": "Method missing",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Method: calculateStatistics",
+      "status": "FAIL",
+      "details": "Method missing",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Method: transformSubmissionData",
+      "status": "FAIL",
+      "details": "Method missing",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "admin",
+      "testName": "Analytics Method: downloadCSV",
+      "status": "PASS",
+      "details": "Method implemented",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Environment: VITE_FORMSPREE_CONTACT_KEY",
+      "status": "PASS",
+      "details": "Key configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Environment: VITE_FORMSPREE_APPLY_KEY",
+      "status": "PASS",
+      "details": "Key configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Environment: VITE_FORMSPREE_NEWSLETTER_KEY",
+      "status": "PASS",
+      "details": "Key configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.438Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Route: /contact",
+      "status": "PASS",
+      "details": "Route configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.439Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Route: /apply",
+      "status": "PASS",
+      "details": "Route configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.439Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Route: /admin",
+      "status": "PASS",
+      "details": "Route configured",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.439Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Navigation: Apply",
+      "status": "PASS",
+      "details": "Link available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.439Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Navigation: Contact",
+      "status": "PASS",
+      "details": "Link available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.439Z"
+    },
+    {
+      "formType": "integration",
+      "testName": "Navigation: Admin",
+      "status": "PASS",
+      "details": "Link available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.439Z"
+    },
+    {
+      "formType": "accessibility",
+      "testName": "Contact Form Access",
+      "status": "PASS",
+      "details": "Homepage accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.452Z"
+    },
+    {
+      "formType": "accessibility",
+      "testName": "Apply Form Access",
+      "status": "PASS",
+      "details": "Apply page accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.463Z"
+    },
+    {
+      "formType": "accessibility",
+      "testName": "Admin Dashboard Access",
+      "status": "PASS",
+      "details": "Admin dashboard accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:50:57.473Z"
+    }
+  ],
+  "summary": {
+    "total": 89,
+    "passed": 86,
+    "failed": 3,
+    "successRate": "96.63"
+  },
+  "formTests": {
+    "contact": {
+      "tests": [
+        {
+          "formType": "contact",
+          "testName": "Contact Component",
+          "status": "PASS",
+          "details": "Contact.tsx exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.435Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Formspree Integration",
+          "status": "PASS",
+          "details": "Formspree form ID configured",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.435Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Required Field: firstName",
+          "status": "PASS",
+          "details": "Field is required",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.435Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Required Field: lastName",
+          "status": "PASS",
+          "details": "Field is required",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.435Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Required Field: email",
+          "status": "PASS",
+          "details": "Field is required",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.435Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Required Field: subject",
+          "status": "PASS",
+          "details": "Field is required",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.435Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Required Field: message",
+          "status": "PASS",
+          "details": "Field is required",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Validation: disabled={state.submitting}",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Validation: toast.success",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Validation: toast.error",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Validation: state.succeeded",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Validation: state.errors",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Form Field: First Name",
+          "status": "PASS",
+          "details": "Field present",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Form Field: Last Name",
+          "status": "PASS",
+          "details": "Field present",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Form Field: Email",
+          "status": "PASS",
+          "details": "Field present",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Form Field: Company",
+          "status": "PASS",
+          "details": "Field present",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Form Field: Subject",
+          "status": "PASS",
+          "details": "Field present",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Form Field: Message",
+          "status": "PASS",
+          "details": "Field present",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Subject Option: AI Consultation",
+          "status": "PASS",
+          "details": "Option available",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Subject Option: Partnership Opportunity",
+          "status": "PASS",
+          "details": "Option available",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Subject Option: Investment Inquiry",
+          "status": "PASS",
+          "details": "Option available",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Subject Option: General Inquiry",
+          "status": "PASS",
+          "details": "Option available",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        },
+        {
+          "formType": "contact",
+          "testName": "Subject Option: Other",
+          "status": "PASS",
+          "details": "Option available",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.436Z"
+        }
+      ],
+      "passed": 23,
+      "failed": 0
+    },
+    "apply": {
+      "tests": [
+        {
+          "formType": "apply",
+          "testName": "Apply Page",
+          "status": "PASS",
+          "details": "Apply.tsx exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Multi-Step Application",
+          "status": "PASS",
+          "details": "MultiStepApplication.tsx exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Formspree Integration",
+          "status": "PASS",
+          "details": "Formspree apply key configured",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step Component: CompanyInfoStep",
+          "status": "PASS",
+          "details": "Step component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step Component: TechnologyStep",
+          "status": "PASS",
+          "details": "Step component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step Component: MarketFundingStep",
+          "status": "PASS",
+          "details": "Step component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step Component: TeamContactStep",
+          "status": "PASS",
+          "details": "Step component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Form Data: useMultiStepForm",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Form Data: formData",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Form Data: handleFieldChange",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Form Data: goToNextStep",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Form Data: goToPreviousStep",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Data Storage Integration",
+          "status": "PASS",
+          "details": "Data storage integrated",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step File: CompanyInfoStep.tsx",
+          "status": "PASS",
+          "details": "Step file exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step File: TechnologyStep.tsx",
+          "status": "PASS",
+          "details": "Step file exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step File: MarketFundingStep.tsx",
+          "status": "PASS",
+          "details": "Step file exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        },
+        {
+          "formType": "apply",
+          "testName": "Step File: TeamContactStep.tsx",
+          "status": "PASS",
+          "details": "Step file exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.437Z"
+        }
+      ],
+      "passed": 17,
+      "failed": 0
+    },
+    "newsletter": {
+      "tests": [
+        {
+          "formType": "newsletter",
+          "testName": "Footer Component",
+          "status": "PASS",
+          "details": "Footer.tsx exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Formspree Integration",
+          "status": "PASS",
+          "details": "Formspree newsletter key configured",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Newsletter Feature: type=\"email\"",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Newsletter Feature: name=\"email\"",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Newsletter Feature: required",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Newsletter Feature: placeholder=\"Enter your email\"",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Newsletter Feature: Newsletter",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Validation: disabled={state.submitting}",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Validation: toast.success",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Validation: toast.error",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Validation: state.succeeded",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "newsletter",
+          "testName": "Validation: state.errors",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        }
+      ],
+      "passed": 12,
+      "failed": 0
+    },
+    "admin": {
+      "tests": [
+        {
+          "formType": "admin",
+          "testName": "Admin Dashboard",
+          "status": "PASS",
+          "details": "AdminDashboard.tsx exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Data Storage Integration",
+          "status": "PASS",
+          "details": "Data storage integrated",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Feature: total_submissions",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Feature: by_type",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Feature: recent_submissions",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Feature: total_events",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Feature: unique_sessions",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Feature: getAnalyticsSummary",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Visualization: BarChart3",
+          "status": "PASS",
+          "details": "Component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Visualization: PieChart",
+          "status": "PASS",
+          "details": "Component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Visualization: TrendingUp",
+          "status": "PASS",
+          "details": "Component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Visualization: Database",
+          "status": "PASS",
+          "details": "Component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Visualization: Users",
+          "status": "PASS",
+          "details": "Component imported",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Filtering: Filter",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Filtering: Search",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Filtering: dateRange",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Filtering: industry",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Filtering: fundingRange",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Filtering: companyStage",
+          "status": "PASS",
+          "details": "Feature implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Data Storage Service",
+          "status": "PASS",
+          "details": "Data storage service exists",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Method: getAnalyticsSummary",
+          "status": "PASS",
+          "details": "Method implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Method: getFormSubmissions",
+          "status": "FAIL",
+          "details": "Method missing",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Method: calculateStatistics",
+          "status": "FAIL",
+          "details": "Method missing",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Method: transformSubmissionData",
+          "status": "FAIL",
+          "details": "Method missing",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        },
+        {
+          "formType": "admin",
+          "testName": "Analytics Method: downloadCSV",
+          "status": "PASS",
+          "details": "Method implemented",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:50:57.438Z"
+        }
+      ],
+      "passed": 22,
+      "failed": 3
+    }
+  },
+  "endTime": "2025-09-18T06:50:57.473Z"
+}

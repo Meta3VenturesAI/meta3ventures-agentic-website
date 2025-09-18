@@ -434,7 +434,7 @@ export class AdminAgentOrchestrator {
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message,
+        error: (error as any).message,
         latency: 0
       };
     }
@@ -562,7 +562,7 @@ export class AdminAgentOrchestrator {
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message,
+        error: (error as any).message,
         processingTime: Date.now() - startTime
       };
     }

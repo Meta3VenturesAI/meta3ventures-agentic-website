@@ -6,7 +6,7 @@ export const seoUtils = {
     const baseSchema = {
       "@context": "https://schema.org",
       "@type": type,
-      ...data
+      ...(data as any)
     };
 
     return JSON.stringify(baseSchema);

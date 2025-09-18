@@ -71,7 +71,7 @@ export class RAGService {
       
       this.isInitialized = true;
       console.log('✅ RAG Service initialized');
-    } catch {
+    } catch (error) {
       console.warn('RAG Service initialization failed, continuing with limited functionality:', error);
       this.isInitialized = true; // Allow service to work with limited functionality
     }
@@ -140,7 +140,7 @@ export class RAGService {
       }
 
       return await this.vectorDB.getDocument(id);
-    } catch {
+    } catch (error) {
       console.error('Error retrieving knowledge:', error);
       return null;
     }
@@ -153,7 +153,7 @@ export class RAGService {
       }
 
       return await this.vectorDB.getAllDocuments();
-    } catch {
+    } catch (error) {
       console.error('Error retrieving all knowledge:', error);
       return [];
     }
@@ -166,7 +166,7 @@ export class RAGService {
       }
 
       return await this.vectorDB.deleteDocument(id);
-    } catch {
+    } catch (error) {
       console.error('Error deleting knowledge:', error);
       return false;
     }
@@ -183,7 +183,7 @@ export class RAGService {
         ...stats,
         lastUpdated: new Date()
       };
-    } catch {
+    } catch (error) {
       console.error('Error getting stats:', error);
       return {
         totalDocuments: 0,

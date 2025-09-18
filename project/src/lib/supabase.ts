@@ -34,7 +34,7 @@ const createSupabaseClient = () => {
         signOut: () => Promise.resolve({ error: null }),
         signInWithPassword: () => Promise.resolve({ data: null, error: { message: 'Supabase not configured' } })
       }
-    } as unknown;
+    } as any;
   }
 
   return createClient(supabaseUrl, supabaseAnonKey, {
@@ -62,12 +62,12 @@ export async function handleSupabaseError<T>(
     
     if (error) {
       // Check for specific error types
-      if (error.code === '42P01') {
-        throw new Error(`Database table does not exist: ${error.message}`);
+      if ((error as any).code === '42P01') {
+        throw new Error(`Database table does not exist: ${(error as any).message}`);
       }
       
       console.error('Supabase error:', error);
-      throw new Error(error.message || 'Database operation failed');
+      throw new Error((error as any).message || 'Database operation failed');
     }
     
     if (!data) {

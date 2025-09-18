@@ -184,8 +184,8 @@ class ErrorMonitoringService {
       
       Sentry.withScope(scope => {
         // Set context with proper type
-        scope.setContext('error_details', errorReport.context as unknown);
-        scope.setLevel(this.mapSeverityToSentryLevel(errorReport.context.severity) as unknown);
+        scope.setContext('error_details', errorReport.context as any);
+        scope.setLevel(this.mapSeverityToSentryLevel(errorReport.context.severity as any) as any);
         
         // Set tags
         scope.setTag('form_id', errorReport.context.formId || 'unknown');
@@ -223,7 +223,7 @@ class ErrorMonitoringService {
       'Non-Error promise rejection captured'
     ];
     
-    const errorMessage = error.message || error.toString();
+    const errorMessage = (error as any).message || error.toString();
     return ignoredMessages.some(msg => errorMessage.includes(msg));
   }
 

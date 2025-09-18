@@ -223,7 +223,7 @@ export const mvpPlannerTool: AgentTool = {
   id: 'mvp-planner',
   name: 'MVP Development Planner',
   description: 'Creates a comprehensive MVP development plan with features, timeline, and resource requirements',
-  category: 'planning',
+  category: 'analysis',
   parameters: {
     type: 'object',
     properties: {

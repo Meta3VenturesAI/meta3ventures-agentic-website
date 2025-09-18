@@ -115,14 +115,70 @@ export default defineConfig(({ mode }) => {
     target: 'es2020',
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'ui-vendor': ['@formspree/react', 'react-hot-toast'],
-          'charts': ['recharts'],
-          'supabase': ['@supabase/supabase-js'],
-          'utils': ['date-fns'],
-          'icons': ['lucide-react']
+        manualChunks: (id) => {
+          // React and core libraries
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'react-vendor';
+          }
+          
+          // Router
+          if (id.includes('node_modules/react-router-dom/')) {
+            return 'router';
+          }
+          
+          // Charts and visualization
+          if (id.includes('node_modules/recharts/') || id.includes('node_modules/d3-')) {
+            return 'charts';
+          }
+          
+          // Supabase
+          if (id.includes('node_modules/@supabase/')) {
+            return 'supabase';
+          }
+          
+          // UI libraries
+          if (id.includes('node_modules/@formspree/') || id.includes('node_modules/react-hot-toast/')) {
+            return 'ui-vendor';
+          }
+          
+          // Icons
+          if (id.includes('node_modules/lucide-react/')) {
+            return 'icons';
+          }
+          
+          // Utils
+          if (id.includes('node_modules/date-fns/') || id.includes('node_modules/lodash/')) {
+            return 'utils';
+          }
+          
+          // Agent system - split into smaller chunks
+          if (id.includes('src/services/agents/')) {
+            if (id.includes('AdminAgentOrchestrator') || id.includes('AgentAuthGuard')) {
+              return 'agent-core';
+            }
+            if (id.includes('LLMService') || id.includes('RAGService')) {
+              return 'agent-llm';
+            }
+            if (id.includes('AgentTools') || id.includes('Tool')) {
+              return 'agent-tools';
+            }
+            return 'agent-utils';
+          }
+          
+          // Admin dashboard
+          if (id.includes('src/pages/AdminDashboard') || id.includes('src/components/AdminDashboard')) {
+            return 'admin-dashboard';
+          }
+          
+          // Blog system
+          if (id.includes('src/pages/Blog') || id.includes('src/components/Blog')) {
+            return 'blog-system';
+          }
+          
+          // Forms
+          if (id.includes('src/components/forms/') || id.includes('src/pages/Apply')) {
+            return 'forms';
+          }
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
@@ -143,7 +199,7 @@ export default defineConfig(({ mode }) => {
     },
     cssCodeSplit: true,
     assetsInlineLimit: 4096,
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 500
   },
   server: {
     port: 5173,

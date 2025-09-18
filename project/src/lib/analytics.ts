@@ -52,7 +52,7 @@ export async function trackPageView(pageView: Omit<PageView, 'timestamp'>) {
     const result = await supabase
       .from('page_views')
       .insert([{
-        ...pageView,
+        ...(pageView as any),
         timestamp: new Date().toISOString(),
         user_agent: userAgent,
         device_type: deviceType
@@ -69,7 +69,7 @@ export async function trackEvent(event: Omit<AnalyticsEvent, 'created_at'>) {
   try {
     const result = await supabase
       .from('analytics_events')
-      .insert([event]);
+      .insert([event as any]);
 
     return result;
   } catch (error) {
@@ -83,7 +83,7 @@ export async function trackLeadSubmission(lead: Omit<LeadSubmission, 'id' | 'cre
     const result = await supabase
       .from('leads')
       .insert([{
-        ...lead,
+        ...(lead as any),
         status: 'new',
         tags: []
       }])
@@ -104,7 +104,7 @@ export async function getAnalyticsSummary(startDate: string, endDate: string): P
       .from('page_views')
       .select('*')
       .gte('timestamp', startDate)
-      .lte('timestamp', endDate);
+      .lte('timestamp', endDate) as any;
 
     if (pageViewsError) {
       throw pageViewsError;
@@ -114,7 +114,7 @@ export async function getAnalyticsSummary(startDate: string, endDate: string): P
       .from('leads')
       .select('*')
       .gte('created_at', startDate)
-      .lte('created_at', endDate);
+      .lte('created_at', endDate) as any;
 
     if (leadsError) {
       throw leadsError;
@@ -122,7 +122,7 @@ export async function getAnalyticsSummary(startDate: string, endDate: string): P
 
     // Process real data if available
     const totalPageViews = pageViews?.length || 0;
-    const uniqueVisitors = new Set(pageViews?.map((pv: unknown) => pv.session_id)).size || 0;
+    const uniqueVisitors = new Set(pageViews?.map((pv: any) => pv.session_id)).size || 0;
     const totalLeads = leads?.length || 0;
 
     return {
@@ -176,7 +176,7 @@ export async function getLeads(startDate: string, endDate: string): Promise<Lead
       .select('*')
       .gte('created_at', startDate)
       .lte('created_at', endDate)
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false }) as any;
 
     if (error) {
       throw error;
@@ -191,7 +191,7 @@ export async function getLeads(startDate: string, endDate: string): Promise<Lead
 
 // Helper functions for processing data with proper typing
 function processTopPages(pageViews: unknown[]): { page: string; views: number }[] {
-  const pageCount = pageViews.reduce((acc: Record<string, number>, pv: unknown) => {
+  const pageCount = pageViews.reduce((acc: Record<string, number>, pv: any) => {
     acc[pv.page] = (acc[pv.page] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
@@ -203,7 +203,7 @@ function processTopPages(pageViews: unknown[]): { page: string; views: number }[
 }
 
 function processLeadsBySource(leads: unknown[]): { source: string; count: number }[] {
-  const sourceCount = leads.reduce((acc: Record<string, number>, lead: unknown) => {
+  const sourceCount = leads.reduce((acc: Record<string, number>, lead: any) => {
     acc[lead.source] = (acc[lead.source] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
@@ -213,7 +213,7 @@ function processLeadsBySource(leads: unknown[]): { source: string; count: number
 }
 
 function processDeviceBreakdown(pageViews: unknown[]): { device: string; count: number }[] {
-  const deviceCount = pageViews.reduce((acc: Record<string, number>, pv: unknown) => {
+  const deviceCount = pageViews.reduce((acc: Record<string, number>, pv: any) => {
     const device = pv.device_type || 'unknown';
     acc[device] = (acc[device] || 0) + 1;
     return acc;
@@ -224,7 +224,7 @@ function processDeviceBreakdown(pageViews: unknown[]): { device: string; count: 
 }
 
 function processCountryBreakdown(pageViews: unknown[]): { country: string; count: number }[] {
-  const countryCount = pageViews.reduce((acc: Record<string, number>, pv: unknown) => {
+  const countryCount = pageViews.reduce((acc: Record<string, number>, pv: any) => {
     const country = pv.country_code || 'unknown';
     acc[country] = (acc[country] || 0) + 1;
     return acc;

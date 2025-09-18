@@ -194,7 +194,7 @@ async function runEnhancedFeaturesTest() {
     console.log('✅ User Profile Management');
     console.log('✅ System Health Monitoring');
 
-  } catch {
+  } catch (error) {
     console.error('\n💥 Enhanced features test failed:', error);
     process.exit(1);
   }

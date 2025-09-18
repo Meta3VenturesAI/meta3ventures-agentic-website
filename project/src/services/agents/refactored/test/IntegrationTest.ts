@@ -133,7 +133,7 @@ export class IntegrationTest {
         success: providers.length > 0,
         data: { 
           providerCount: providers.length,
-          providerIds: providers.map(p => p.id)
+          providerIds: providers.map((p: any) => p.id)
         }
       });
     } catch (error) {

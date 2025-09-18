@@ -83,9 +83,9 @@ export class BlogService {
     if (error) throw error;
     
     // Transform the data to match our type
-    const posts = data?.map((post: unknown) => ({
-      ...post,
-      tags: post.tags?.map((t: unknown) => t.tag) || []
+    const posts = data?.map((post: any) => ({
+      ...(post as any),
+      tags: (post as any).tags?.map((t: any) => t.tag) || []
     })) || [];
     
     return { data: posts, count: count || 0 };
@@ -112,7 +112,7 @@ export class BlogService {
     // Transform tags
     const post = {
       ...data,
-      tags: data.tags?.map((t: unknown) => t.tag) || []
+      tags: (data as any).tags?.map((t: any) => t.tag) || []
     };
     
     // Track view
@@ -168,9 +168,9 @@ export class BlogService {
     
     // Update reading time if content changed
     if (postData.content) {
-      (postFields as unknown).reading_time = this.calculateReadingTime(postData.content);
-      (postFields as unknown).word_count = postData.content.split(/\s+/).length;
-      (postFields as unknown).toc = this.generateTableOfContents(postData.content);
+      (postFields as any).reading_time = this.calculateReadingTime(postData.content);
+      (postFields as any).word_count = postData.content.split(/\s+/).length;
+      (postFields as any).toc = this.generateTableOfContents(postData.content);
     }
     
     // Update the post
@@ -387,9 +387,9 @@ export class BlogService {
       .select('view_count, like_count, share_count')
       .eq('status', 'published');
     
-    const totalViews = stats?.reduce((sum: number, post: unknown) => sum + (post.view_count || 0), 0) || 0;
-    const totalLikes = stats?.reduce((sum: number, post: unknown) => sum + (post.like_count || 0), 0) || 0;
-    const totalShares = stats?.reduce((sum: number, post: unknown) => sum + (post.share_count || 0), 0) || 0;
+    const totalViews = stats?.reduce((sum: number, post: any) => sum + (post.view_count || 0), 0) || 0;
+    const totalLikes = stats?.reduce((sum: number, post: any) => sum + (post.like_count || 0), 0) || 0;
+    const totalShares = stats?.reduce((sum: number, post: any) => sum + (post.share_count || 0), 0) || 0;
     
     // Get top posts
     const { data: topPosts } = await supabase

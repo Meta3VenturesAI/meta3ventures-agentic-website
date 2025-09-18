@@ -21,7 +21,7 @@ const BlogPost: React.FC = () => {
       const savedPosts = localStorage.getItem('blog-posts');
       if (savedPosts) {
         const posts = JSON.parse(savedPosts);
-        const post = posts.find((post: unknown) => post.slug === slug);
+        const post = posts.find((post: any) => post.slug === slug);
         if (post) return post;
       }
     } catch (error) {
@@ -68,7 +68,7 @@ const BlogPost: React.FC = () => {
   };
 
   // Get appropriate image based on category
-  const getImageForPost = (post: unknown) => {
+  const getImageForPost = (post: any) => {
     if (post.image) return post.image;
     
     if (post.category === 'ai') {

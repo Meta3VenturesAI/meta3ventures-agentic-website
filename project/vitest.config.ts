@@ -8,6 +8,11 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
+    environmentOptions: {
+      jsdom: {
+        resources: 'usable'
+      }
+    },
     coverage: {
       reporter: ['text', 'json', 'html'],
       exclude: [

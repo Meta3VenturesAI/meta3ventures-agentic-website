@@ -1,0 +1,114 @@
+{
+  "startTime": "2025-09-18T06:51:49.086Z",
+  "tests": [
+    {
+      "agentId": "meta3Assistant",
+      "testName": "Component File",
+      "status": "FAIL",
+      "details": "HomepageAgents.tsx not found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.087Z"
+    },
+    {
+      "agentId": "m3vcVentureBuilder",
+      "testName": "Component File",
+      "status": "FAIL",
+      "details": "HomepageAgents.tsx not found",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.088Z"
+    },
+    {
+      "agentId": "integration",
+      "testName": "Homepage Integration",
+      "status": "FAIL",
+      "details": "HomepageAgents not integrated",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.089Z"
+    },
+    {
+      "agentId": "integration",
+      "testName": "Agent Orchestrator",
+      "status": "PASS",
+      "details": "AdminAgentOrchestrator available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.089Z"
+    },
+    {
+      "agentId": "integration",
+      "testName": "LLM Providers",
+      "status": "PASS",
+      "details": "3/3 LLM providers available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.089Z"
+    },
+    {
+      "agentId": "integration",
+      "testName": "Agent Authentication",
+      "status": "PASS",
+      "details": "AgentAuthGuard available",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.089Z"
+    },
+    {
+      "agentId": "accessibility",
+      "testName": "Public Access",
+      "status": "FAIL",
+      "details": "Agents require authentication",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.089Z"
+    },
+    {
+      "agentId": "accessibility",
+      "testName": "Homepage Access",
+      "status": "PASS",
+      "details": "Homepage accessible (200)",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.106Z"
+    },
+    {
+      "agentId": "accessibility",
+      "testName": "Agent Section",
+      "status": "FAIL",
+      "details": "Agent section not included",
+      "duration": 0,
+      "timestamp": "2025-09-18T06:51:49.106Z"
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 4,
+    "failed": 5,
+    "successRate": "44.44"
+  },
+  "agentTests": {
+    "meta3Assistant": {
+      "tests": [
+        {
+          "agentId": "meta3Assistant",
+          "testName": "Component File",
+          "status": "FAIL",
+          "details": "HomepageAgents.tsx not found",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:51:49.087Z"
+        }
+      ],
+      "passed": 0,
+      "failed": 1
+    },
+    "m3vcVentureBuilder": {
+      "tests": [
+        {
+          "agentId": "m3vcVentureBuilder",
+          "testName": "Component File",
+          "status": "FAIL",
+          "details": "HomepageAgents.tsx not found",
+          "duration": 0,
+          "timestamp": "2025-09-18T06:51:49.088Z"
+        }
+      ],
+      "passed": 0,
+      "failed": 1
+    }
+  },
+  "endTime": "2025-09-18T06:51:49.106Z"
+}

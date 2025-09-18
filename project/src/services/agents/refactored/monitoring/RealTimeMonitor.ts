@@ -206,7 +206,7 @@ export class RealTimeMonitor extends EventEmitter {
       agentId,
       userId,
       sessionId,
-      data: { interactionType, ...data }
+      data: { interactionType, ...(data as any) }
     });
   }
 
@@ -409,7 +409,7 @@ export class RealTimeMonitor extends EventEmitter {
 
   // Real-time Subscriptions
   subscribeToAgentEvents(agentId: string, callback: (_event: AgentEvent) => void): () => void {
-    const handler = (_event: AgentEvent) => {
+    const handler = (event: any) => {
       if (event.agentId === agentId) {
         callback(event);
       }
@@ -420,7 +420,7 @@ export class RealTimeMonitor extends EventEmitter {
     return () => this.off('agentEvent', handler);
   }
 
-  subscribeToAlerts(_callback: (alert: SystemAlert) => void): () => void {
+  subscribeToAlerts(callback: (alert: SystemAlert) => void): () => void {
     this.on('alert', callback);
     return () => this.off('alert', callback);
   }

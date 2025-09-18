@@ -55,12 +55,12 @@ class PerformanceMonitor {
             this.metrics.largestContentfulPaint = entry.startTime;
             break;
           case 'first-input':
-            this.metrics.firstInputDelay = (entry as unknown).processingStart - entry.startTime;
+            this.metrics.firstInputDelay = (entry as any).processingStart - entry.startTime;
             break;
           case 'layout-shift':
-            if (!(entry as unknown).hadRecentInput) {
+            if (!(entry as any).hadRecentInput) {
               this.metrics.cumulativeLayoutShift = 
-                (this.metrics.cumulativeLayoutShift || 0) + (entry as unknown).value;
+                (this.metrics.cumulativeLayoutShift || 0) + (entry as any).value;
             }
             break;
           case 'paint':
@@ -103,12 +103,12 @@ class PerformanceMonitor {
 
     // Memory usage (if available)
     if ('memory' in performance) {
-      this.metrics.memoryUsage = (performance as unknown).memory;
+      this.metrics.memoryUsage = (performance as any).memory;
     }
 
     // Connection info
     if ('connection' in navigator) {
-      this.metrics.connectionType = (navigator as unknown).connection?.effectiveType;
+      this.metrics.connectionType = (navigator as any).connection?.effectiveType;
     }
 
     // Device type
@@ -123,7 +123,7 @@ class PerformanceMonitor {
   }
 
   private getResourceTimings(): ResourceTiming[] {
-    return performance.getEntriesByType('resource').map((entry: unknown) => ({
+    return performance.getEntriesByType('resource').map((entry: any) => ({
       name: entry.name,
       duration: entry.duration,
       size: entry.transferSize,

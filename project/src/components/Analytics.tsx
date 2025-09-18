@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 
 // Lazy load charts component for better bundle splitting
 const AnalyticsCharts = lazy(() => import('./charts/AnalyticsCharts'));
@@ -23,16 +23,7 @@ export const Analytics: React.FC = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const [isUsingMockData, setIsUsingMockData] = useState(false);
 
-  useEffect(() => {
-    loadData();
-    // Set up auto-refresh every 5 minutes
-    const interval = setInterval(() => {
-      setRefreshKey(prev => prev + 1);
-    }, 300000);
-    return () => clearInterval(interval);
-  }, [dateRange, refreshKey]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     try {
       const [summaryData, leadsData] = await Promise.all([
@@ -63,7 +54,16 @@ export const Analytics: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [dateRange.start, dateRange.end]);
+
+  useEffect(() => {
+    loadData();
+    // Set up auto-refresh every 5 minutes
+    const interval = setInterval(() => {
+      setRefreshKey(prev => prev + 1);
+    }, 300000);
+    return () => clearInterval(interval);
+  }, [dateRange, refreshKey, loadData]);
 
   const handleDateRangeSelect = (days: number) => {
     setDateRange({

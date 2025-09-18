@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { blogService } from '../services/blog-service';
 import { formatNumber, formatRelativeTime } from '../utils/helpers';
-import type { BlogStats, Tag as TagType } from '../types/blog-enhanced';
+import type { BlogStats, Tag as _TagType } from '../types/blog-enhanced';
 
 interface MetricCardProps {
   title: string;

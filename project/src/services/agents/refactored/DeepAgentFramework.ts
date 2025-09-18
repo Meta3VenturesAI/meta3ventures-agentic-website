@@ -189,7 +189,7 @@ export class DeepAgentFramework {
     const tasks: DeepTask[] = [];
     
     // Basic task decomposition based on query analysis
-    if (complexity.factors.includes('Multiple questions')) {
+    if ((complexity as any).factors.includes('Multiple questions')) {
       tasks.push({
         id: 'task-1',
         description: 'Break down multi-part question',
@@ -200,7 +200,7 @@ export class DeepAgentFramework {
       });
     }
 
-    if (complexity.factors.some((f: string) => f.includes('research') || f.includes('analyze'))) {
+    if ((complexity as any).factors.some((f: string) => f.includes('research') || f.includes('analyze'))) {
       tasks.push({
         id: 'task-2',
         description: 'Conduct research and analysis',
@@ -211,7 +211,7 @@ export class DeepAgentFramework {
       });
     }
 
-    if (complexity.factors.some((f: string) => f.includes('Domain complexity'))) {
+    if ((complexity as any).factors.some((f: string) => f.includes('Domain complexity'))) {
       tasks.push({
         id: 'task-3',
         description: 'Apply domain-specific expertise',
@@ -318,7 +318,7 @@ Task Type: ${task.type}
 Task Description: ${task.description}
 Priority: ${task.priority}
 
-Previous Results: ${session.results.map(r => r.content).join('\n\n')}
+Previous Results: ${session.results.map((r: any) => r.content).join('\n\n')}
 
 Focus on providing detailed, accurate information for this specific task. Your response will be combined with other task results to form a comprehensive answer.`;
 
@@ -343,7 +343,7 @@ Please provide a detailed response for this specific aspect of the query. Be tho
 Original Query: ${session.originalQuery}
 
 Task Results:
-${session.results.map((result, index) => 
+${session.results.map((result: any, index) => 
   `${index + 1}. ${result.reasoning}\n${result.content}\n`
 ).join('\n')}
 
@@ -414,7 +414,7 @@ Make the response professional, thorough, and easy to understand.`;
 
     return `Based on my deep analysis of your query "${session.originalQuery}", here's what I found:
 
-${session.results.map((result, index) => 
+${session.results.map((result: any, index) => 
   `${index + 1}. ${result.content}`
 ).join('\n\n')}
 

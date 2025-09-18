@@ -24,11 +24,11 @@ export class ExternalProviderAdapter implements LLMProvider {
   }
 
   get id(): string {
-    return this.providerId;
+    return this._providerId;
   }
 
   get name(): string {
-    return this.providerName;
+    return this._providerName;
   }
 
   get supportedModels(): string[] {
@@ -49,9 +49,9 @@ export class ExternalProviderAdapter implements LLMProvider {
 
   async isAvailable(): Promise<boolean> {
     try {
-      return await this.externalProvider.isAvailable();
+      return await this._externalProvider.isAvailable();
     } catch (error) {
-      console.warn(`External provider ${this.providerId} availability check failed:`, error);
+      console.warn(`External provider ${this._providerId} availability check failed:`, error);
       return false;
     }
   }
@@ -73,10 +73,10 @@ export class ExternalProviderAdapter implements LLMProvider {
         topP: params.topP ?? 0.9
       };
 
-      const result = await this.externalProvider.generate(externalParams);
+      const result = await this._externalProvider.generate(externalParams);
       return result;
     } catch (error) {
-      console.error(`External provider ${this.providerId} generation failed:`, error);
+      console.error(`External provider ${this._providerId} generation failed:`, error);
       throw new Error(`Failed to generate response: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
@@ -122,7 +122,7 @@ export class ExternalProviderAdapter implements LLMProvider {
     try {
       return await this.isAvailable();
     } catch (error) {
-      console.error(`External provider ${this.providerId} connection test failed:`, error);
+      console.error(`External provider ${this._providerId} connection test failed:`, error);
       return false;
     }
   }

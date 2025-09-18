@@ -108,7 +108,7 @@ class HubSpotService {
   /**
    * Submit application form data to HubSpot
    */
-  async submitApplication(formData: unknown): Promise<void> {
+  async submitApplication(formData: any): Promise<void> {
     // Create contact
     const contact: HubSpotContact = {
       email: formData.contactEmail,
@@ -152,15 +152,16 @@ class HubSpotService {
    * Submit contact form to HubSpot
    */
   async submitContactForm(formData: unknown): Promise<void> {
+    const data = formData as any;
     const contact: HubSpotContact = {
-      email: formData.email,
-      firstname: formData.name?.split(' ')[0],
-      lastname: formData.name?.split(' ').slice(1).join(' '),
-      company: formData.company,
-      phone: formData.phone,
+      email: data.email,
+      firstname: data.name?.split(' ')[0],
+      lastname: data.name?.split(' ').slice(1).join(' '),
+      company: data.company,
+      phone: data.phone,
       lifecyclestage: 'lead',
-      message: formData.message,
-      contact_type: formData.type || 'general',
+      message: data.message,
+      contact_type: data.type || 'general',
     };
 
     await this.createContact(contact);
@@ -239,7 +240,7 @@ class HubSpotService {
 
     const existing = localStorage.getItem('hubspot-queue') || '[]';
     const queue = JSON.parse(existing);
-    const pending = queue.filter((item: unknown) => !item.synced);
+    const pending = queue.filter((item: any) => !item.synced);
 
     for (const item of pending) {
       try {

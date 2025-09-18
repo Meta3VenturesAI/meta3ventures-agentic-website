@@ -19,7 +19,7 @@ async function runIntegrationTest() {
     
     console.log('\n🎉 Integration test completed successfully!');
     process.exit(0);
-  } catch {
+  } catch (error) {
     console.error('\n💥 Integration test failed:', error);
     process.exit(1);
   }

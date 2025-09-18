@@ -32,7 +32,7 @@ const BlogPage: React.FC = () => {
   };
 
   // Get appropriate image based on category
-  const getImageForPost = (post: unknown) => {
+  const getImageForPost = (post: any) => {
     if (post.image) return post.image;
     
     if (post.category === 'ai') {

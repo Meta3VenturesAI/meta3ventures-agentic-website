@@ -237,7 +237,7 @@ The Meta3Ventures Team
   /**
    * Send application confirmation email
    */
-  async sendApplicationConfirmation(data: unknown): Promise<boolean> {
+  async sendApplicationConfirmation(data: any): Promise<boolean> {
     return this.sendEmail({
       to: data.contactEmail,
       template: 'application-received',
@@ -251,7 +251,7 @@ The Meta3Ventures Team
   /**
    * Send contact form confirmation
    */
-  async sendContactConfirmation(data: unknown): Promise<boolean> {
+  async sendContactConfirmation(data: any): Promise<boolean> {
     return this.sendEmail({
       to: data.email,
       template: 'contact-received',
@@ -278,7 +278,7 @@ The Meta3Ventures Team
   /**
    * Send investor inquiry response
    */
-  async sendInvestorResponse(data: unknown): Promise<boolean> {
+  async sendInvestorResponse(data: any): Promise<boolean> {
     return this.sendEmail({
       to: data.email,
       template: 'investor-inquiry',

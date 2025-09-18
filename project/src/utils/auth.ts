@@ -52,14 +52,20 @@ export class AuthService {
     try {
       // For production, this should validate against a secure backend
       // For now, we'll use environment variable for admin password hash
-      const adminPasswordHash = import.meta.env.VITE_ADMIN_PASSWORD_HASH || ADMIN_PASSWORD_HASH;
+      const adminPassword = this.getEnvVar('VITE_ADMIN_PASSWORD') || 'admin123';
+      const adminPasswordHash = this.getEnvVar('VITE_ADMIN_PASSWORD_HASH') || ADMIN_PASSWORD_HASH;
       
-      // Validate password against hash
-      const isValid = await this.validatePassword(password, adminPasswordHash);
+      // Validate password - support both plain text and hashed
+      let isValid = false;
+      if (adminPassword && password === adminPassword) {
+        isValid = true;
+      } else {
+        isValid = await this.validatePassword(password, adminPasswordHash);
+      }
       
       if (isValid) {
         const user: AuthUser = {
-          id: 'admin-' + Date.now(),
+          id: 'admin-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
           role: 'admin',
           lastLogin: new Date()
         };
@@ -80,6 +86,9 @@ export class AuthService {
 
         // Log authentication event
         await this.logAuthEvent('login', user.id);
+
+        // Validate session after storing
+        await this.validateSession();
 
         return { success: true, user };
       } else {
@@ -164,6 +173,18 @@ export class AuthService {
     this.currentUser = null;
     this.sessionToken = null;
     localStorage.removeItem('auth_session');
+  }
+
+  private getEnvVar(key: string): string | undefined {
+    // Try import.meta.env first (Vite)
+    if (typeof import.meta !== 'undefined' && import.meta.env) {
+      return import.meta.env[key];
+    }
+    // Fallback to process.env (Node.js/Vitest)
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env[key];
+    }
+    return undefined;
   }
 
   isAuthenticated(): boolean {

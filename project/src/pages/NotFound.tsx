@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { Helmet } from 'react-helmet-async';
 
 const NotFound: React.FC = () => {
   return (
     <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta httpEquiv="status" content="404" />
+      </Helmet>
       <SEO 
         title="Page Not Found - Meta3Ventures"
         description="The page you're looking for doesn't exist."

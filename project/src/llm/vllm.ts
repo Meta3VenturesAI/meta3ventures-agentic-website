@@ -70,7 +70,9 @@ export class VLLMProvider implements LLMProvider {
       const response = await this.makeRequest('/v1/models', {});
       return Array.isArray(response.data) && response.data.length > 0;
     } catch (error) {
-      console.warn('vLLM health check failed:', error);
+      if (import.meta.env.DEV) {
+        console.warn('vLLM health check failed:', error);
+      }
       return false;
     }
   }
@@ -98,7 +100,7 @@ export class VLLMProvider implements LLMProvider {
 
   private prepareTools(tools: unknown[]): unknown[] {
     // vLLM uses OpenAI-compatible tool format
-    return tools.map(tool => ({
+    return tools.map((tool: any) => ({
       type: tool.type,
       function: {
         name: tool.function.name,
@@ -113,10 +115,11 @@ export class VLLMProvider implements LLMProvider {
       return undefined;
     }
 
+    const usageData = usage as any;
     return {
-      prompt_tokens: usage.prompt_tokens || 0,
-      completion_tokens: usage.completion_tokens || 0,
-      total_tokens: usage.total_tokens || 0
+      prompt_tokens: usageData.prompt_tokens || 0,
+      completion_tokens: usageData.completion_tokens || 0,
+      total_tokens: usageData.total_tokens || 0
     };
   }
 
@@ -125,7 +128,7 @@ export class VLLMProvider implements LLMProvider {
       return undefined;
     }
 
-    return toolCalls.map(call => ({
+    return toolCalls.map((call: any) => ({
       id: call.id || `call_${Date.now()}`,
       type: 'function',
       function: {
@@ -183,14 +186,15 @@ export class VLLMProvider implements LLMProvider {
       return error;
     }
 
-    if (error.name === 'AbortError') {
+    const err = error as any;
+    if (err.name === 'AbortError') {
       return new LLMTimeoutError('vLLM', this.config.timeout!);
     }
 
     return new LLMError(
-      error.message || 'Unknown error occurred',
+      err.message || 'Unknown error occurred',
       'UNKNOWN_ERROR',
-      error.status || 500,
+      err.status || 500,
       'vLLM'
     );
   }

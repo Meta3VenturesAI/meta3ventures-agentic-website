@@ -220,8 +220,8 @@ Always provide helpful, accurate information based on your expertise in ${this.t
           if (step.parameters) {
             try {
               const toolResult = await agentToolsSystem.executeTool(
-                step.parameters.toolId,
-                step.parameters.params,
+                (step.parameters as any).toolId,
+                (step.parameters as any).params,
                 context
               );
               response += `**${step.name}:** Analysis complete\n${JSON.stringify(toolResult, null, 2)}\n\n`;
@@ -396,7 +396,7 @@ export class AgentBuilder {
   }
 
   // Import agent configuration
-  importAgent(config: unknown): DynamicAgent | null {
+  importAgent(config: any): DynamicAgent | null {
     if (!config.template) return null;
     
     this.addTemplate(config.template);

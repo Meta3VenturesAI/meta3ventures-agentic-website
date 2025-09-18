@@ -34,7 +34,7 @@ async function runProductionReadyTest() {
         console.log(`❌ ${name}`);
         testResults.failed++;
       }
-    } catch {
+    } catch (error) {
       console.log(`❌ ${name} - Error: ${error}`);
       testResults.failed++;
     }
@@ -268,7 +268,7 @@ async function runProductionReadyTest() {
       console.log('✅ System Health Monitoring');
     }
 
-  } catch {
+  } catch (error) {
     console.error('\n💥 Production test failed:', error);
     process.exit(1);
   }

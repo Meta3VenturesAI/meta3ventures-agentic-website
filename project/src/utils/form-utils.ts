@@ -42,7 +42,7 @@ export class FormSubmissionService {
       if (formspreeHandler) {
         try {
           // Create a synthetic form event if needed
-          const formEvent = new Event('submit') as unknown;
+          const formEvent = new Event('submit') as any;
           await formspreeHandler(formEvent);
           
           console.log(`[FormSubmission] ${type} form sent via Formspree`);
@@ -180,5 +180,5 @@ export class FormSubmissionService {
 
 // Export for easy debugging in console
 if (typeof window !== 'undefined') {
-  (window as unknown).FormDebug = FormSubmissionService;
+  (window as any).FormDebug = FormSubmissionService;
 }

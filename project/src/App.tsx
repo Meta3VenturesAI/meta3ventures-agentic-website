@@ -41,7 +41,7 @@ const ContactFormsHub = React.lazy(() => import('./components/forms/ContactForms
 const ContactPage = React.lazy(() => import('./pages/Contact'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFound'));
 const AdminDashboard = React.lazy(() => import('./pages/AdminDashboard'));
-const AgentsPage = React.lazy(() => import('./components/Agents'));
+const _AgentsPage = React.lazy(() => import('./components/Agents'));
 
 function App() {
   useEffect(() => {

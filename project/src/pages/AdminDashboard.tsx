@@ -19,6 +19,7 @@ import { AIAdvisors } from '../components/AIAdvisors';
 import StrategicFundraisingAdvisor from '../components/StrategicFundraisingAdvisor';
 import CompetitiveIntelligenceSystem from '../components/CompetitiveIntelligenceSystem';
 import PerformanceDashboard from '../components/admin/PerformanceDashboard';
+import EnhancedAnalytics from '../components/admin/EnhancedAnalytics';
 import toast from 'react-hot-toast';
 
 interface DataSummary {
@@ -154,15 +155,18 @@ export const AdminDashboard: React.FC = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      // Load summary data
-      const summaryData = await dataStorage.getAnalyticsSummary();
+      console.log('Loading admin data...');
       
-      // Load all form submissions
-      const storedData = localStorage.getItem('form_submissions');
-      const allData = storedData ? JSON.parse(storedData) : [];
+      // Load summary data (now includes Formspree integration)
+      const summaryData = await dataStorage.getAnalyticsSummary();
+      console.log('Summary data loaded:', summaryData);
+      
+      // Load all form submissions (now includes Formspree integration)
+      const allSubmissions = await dataStorage.getAllSubmissions();
+      console.log(`Loaded ${allSubmissions.length} submissions from data storage service`);
       
       // Ensure all submissions have proper structure and valid data
-      const validSubmissions = allData.filter((s: unknown) => 
+      const validSubmissions = allSubmissions.filter((s: any) => 
         s && 
         typeof s === 'object' && 
         s.type && 
@@ -172,7 +176,7 @@ export const AdminDashboard: React.FC = () => {
       );
       
       // Calculate funnel metrics for applications
-      const applications = validSubmissions.filter((s: unknown) => s.type === 'apply');
+      const applications = validSubmissions.filter((s: any) => s.type === 'apply');
       const funnel = calculateFunnelMetrics(applications);
       
       setSummary({
@@ -199,7 +203,7 @@ export const AdminDashboard: React.FC = () => {
     };
 
     let totalTime = 0;
-    applications.forEach(app => {
+    applications.forEach((app: any) => {
       if (app.data?.completedSteps >= 2) metrics.step2_reached++;
       if (app.data?.completedSteps >= 3) metrics.step3_reached++;
       if (app.data?.completedSteps >= 4) metrics.step4_completed++;
@@ -330,7 +334,7 @@ export const AdminDashboard: React.FC = () => {
     }
     
     // Handle cases where data might be empty or malformed
-    const data = submission.data || {};
+    const data = (submission as any).data || {};
     const hasValidData = data && typeof data === 'object' && Object.keys(data).length > 0;
     
     // Additional safety check to prevent React error #31
@@ -554,7 +558,7 @@ export const AdminDashboard: React.FC = () => {
               
               // Handle different file storage formats
               if (data.uploadedFiles && Array.isArray(data.uploadedFiles)) {
-                files.push(...data.uploadedFiles.filter((file: unknown) => file && typeof file === 'object' && file.name));
+                files.push(...data.uploadedFiles.filter((file: any) => file && typeof file === 'object' && file.name));
               }
               
               // Handle attachedFiles (from form submission)
@@ -591,8 +595,8 @@ export const AdminDashboard: React.FC = () => {
               // Handle direct file references
               if (data.pitchDeck && Array.isArray(data.pitchDeck)) {
                 files.push(...data.pitchDeck
-                  .filter((file: unknown) => file && (typeof file === 'string' || (typeof file === 'object' && file.name)))
-                  .map((file: unknown) => ({
+                  .filter((file: any) => file && (typeof file === 'string' || (typeof file === 'object' && file.name)))
+                  .map((file: any) => ({
                     name: file.name || file,
                     type: 'Pitch Deck',
                     category: 'pitchDeck',
@@ -605,8 +609,8 @@ export const AdminDashboard: React.FC = () => {
               
               if (data.businessPlan && Array.isArray(data.businessPlan)) {
                 files.push(...data.businessPlan
-                  .filter((file: unknown) => file && (typeof file === 'string' || (typeof file === 'object' && file.name)))
-                  .map((file: unknown) => ({
+                  .filter((file: any) => file && (typeof file === 'string' || (typeof file === 'object' && file.name)))
+                  .map((file: any) => ({
                     name: file.name || file,
                     type: 'Business Plan',
                     category: 'businessPlan',
@@ -624,7 +628,7 @@ export const AdminDashboard: React.FC = () => {
                     Uploaded Files ({files.length})
                   </h3>
                   <div className="space-y-3">
-                    {files.map((file: unknown, idx: number) => {
+                    {files.map((file: any, idx: number) => {
                       // Ensure file is valid and has required properties
                       if (!file || typeof file !== 'object' || !file.name) {
                         return null;
@@ -719,7 +723,7 @@ export const AdminDashboard: React.FC = () => {
                 <div>
                   <label className="text-gray-500">Submitted</label>
                   <p className="font-medium">
-                    {new Date(submission.timestamp || submission.created_at).toLocaleString()}
+                    {new Date((submission as any).timestamp || (submission as any).created_at).toLocaleString()}
                   </p>
                 </div>
                 {data.timeSpentSeconds && (
@@ -755,7 +759,7 @@ export const AdminDashboard: React.FC = () => {
                 Send Email
               </button>
               <button
-                onClick={() => handleDownloadCSV(submission.type)}
+                onClick={() => handleDownloadCSV((submission as any).type)}
                 className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
               >
                 Export
@@ -895,7 +899,7 @@ export const AdminDashboard: React.FC = () => {
                   <label className="block text-sm font-medium mb-2">Date Range</label>
                   <select 
                     value={filters.dateRange}
-                    onChange={(e) => setFilters({...filters, dateRange: e.target.value as unknown})}
+                    onChange={(e) => setFilters({...filters, dateRange: e.target.value as "all" | "7days" | "30days" | "90days"})}
                     className="w-full px-3 py-2 border rounded-lg"
                   >
                     <option value="all">All Time</option>
@@ -1051,6 +1055,12 @@ export const AdminDashboard: React.FC = () => {
                       <AgentSystemDashboard />
                     ) : activeTab === 'performance' ? (
                       <PerformanceDashboard className="mt-0" />
+                    ) : activeTab === 'overview' ? (
+                      <EnhancedAnalytics 
+                        submissions={allSubmissions} 
+                        onRefresh={loadData}
+                        dataSource={allSubmissions.length > 0 ? 'formspree' : 'local'}
+                      />
                     ) : getFilteredSubmissions.length === 0 ? (
                       <div className="text-center py-8 text-gray-500">
                         No submissions found
@@ -1149,7 +1159,8 @@ export const AdminDashboard: React.FC = () => {
                           partnerships: 'contact_partnership',
                           general: 'contact_general',
                           newsletter: 'newsletter',
-                          agents: 'agents'
+                          agents: 'agents',
+                          performance: 'all'
                         };
                         handleDownloadCSV(typeMap[activeTab]);
                       }}

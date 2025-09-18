@@ -232,7 +232,14 @@ const Agents: React.FC = () => {
   const loadAgentStats = async () => {
     try {
       const stats = await adminAgentOrchestrator.performSystemDiagnostics();
-      setAgentStats(stats);
+      // Convert the orchestrator stats to AgentStats format
+      const agentStats: AgentStats = {
+        totalRequests: stats.agents?.length || 0,
+        successRate: stats.agents?.filter(a => a.health === 'healthy').length / (stats.agents?.length || 1) * 100 || 0,
+        averageResponseTime: stats.performance?.responseTime || 0,
+        lastUpdated: new Date()
+      };
+      setAgentStats(agentStats);
     } catch (error) {
       console.error('Failed to load agent stats:', error);
     }

@@ -194,7 +194,7 @@ export class ResponseController {
 
   private static filterAttachments(attachments: unknown[], maxAttachments: number, context: ResponseContext) {
     if (!attachments || attachments.length <= maxAttachments) {
-      return attachments?.slice(0, 3).map(att => ({ // Convert to standard format
+      return attachments?.slice(0, 3).map((att: any) => ({ // Convert to standard format
         type: (att.type === 'link' ? 'link' : 'action') as 'link' | 'action',
         title: att.title,
         url: att.url,
@@ -209,7 +209,7 @@ export class ResponseController {
       return bScore - aScore;
     });
 
-    return prioritized.slice(0, maxAttachments).map(att => ({
+    return prioritized.slice(0, maxAttachments).map((att: any) => ({
       type: (att.type === 'link' ? 'link' : 'action') as 'link' | 'action',
       title: att.title,
       url: att.url,
@@ -221,18 +221,18 @@ export class ResponseController {
     let score = 0;
     
     if (context.userIntent === 'investment' && 
-        (attachment.title?.toLowerCase().includes('invest') || 
-         attachment.title?.toLowerCase().includes('funding'))) {
+        ((attachment as any).title?.toLowerCase().includes('invest') || 
+         (attachment as any).title?.toLowerCase().includes('funding'))) {
       score += 10;
     }
     
     if (context.userIntent === 'action' && 
-        (attachment.title?.toLowerCase().includes('apply') ||
-         attachment.title?.toLowerCase().includes('contact'))) {
+        ((attachment as any).title?.toLowerCase().includes('apply') ||
+         (attachment as any).title?.toLowerCase().includes('contact'))) {
       score += 10;
     }
 
-    if (attachment.type === 'action') score += 5; // Prioritize actionable items
+    if ((attachment as any).type === 'action') score += 5; // Prioritize actionable items
     
     return score;
   }

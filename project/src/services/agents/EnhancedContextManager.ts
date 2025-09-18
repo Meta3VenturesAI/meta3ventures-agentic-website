@@ -287,7 +287,7 @@ class EnhancedContextManager {
     if (messages.length === 0) return 'No previous conversation';
     
     const topics = this.extractKeyTopics(messages);
-    const userQuestions = messages.filter(m => m.role === 'user').length;
+    const userQuestions = messages.filter((m: any) => m.role === 'user').length;
     
     return `Discussed ${topics.join(', ')} over ${userQuestions} questions`;
   }
@@ -302,7 +302,7 @@ class EnhancedContextManager {
       'market', 'customer', 'revenue', 'growth', 'technology', 'competition'
     ];
 
-    messages.forEach(message => {
+    messages.forEach((message: any) => {
       if (message.content) {
         const content = message.content.toLowerCase();
         topicPatterns.forEach(topic => {
@@ -340,23 +340,23 @@ class EnhancedContextManager {
     };
 
     // Analyze messages for context clues
-    const allContent = messages.map(m => m.content).join(' ').toLowerCase();
+    const allContent = messages.map((m: any) => m.content).join(' ').toLowerCase();
     
     for (const [stage, keywords] of Object.entries(stageKeywords)) {
       if (keywords.some(keyword => allContent.includes(keyword))) {
-        context.companyStage = stage;
+        (context as any).companyStage = stage;
         break;
       }
     }
 
     for (const [stage, keywords] of Object.entries(fundingKeywords)) {
       if (keywords.some(keyword => allContent.includes(keyword))) {
-        context.fundingStage = stage;
+        (context as any).fundingStage = stage;
         break;
       }
     }
 
-    context.industry = profile.industry;
+    (context as any).industry = (profile as any).industry;
     
     return context;
   }

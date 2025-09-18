@@ -170,7 +170,7 @@ validateConfig(appConfig);
 
 // Make config available globally for debugging
 if (typeof window !== 'undefined') {
-  (window as unknown).__APP_CONFIG__ = appConfig;
+  (window as any).__APP_CONFIG__ = appConfig;
 }
 
 export default appConfig;
