@@ -6,6 +6,7 @@ import { ValueFlywheel } from '../components/sections/ValueFlywheel';
 import Services from '../components/sections/Services';
 import { About } from '../components/sections/About';
 import { Contact } from '../components/sections/Contact';
+// import PublicAgents from '../components/PublicAgents'; // Coming soon
 
 const HomePage: React.FC = () => {
   const schema = {
@@ -48,6 +49,7 @@ const HomePage: React.FC = () => {
         <FocusPillars />
         <ValueFlywheel />
         <Services />
+        {/* <PublicAgents /> Coming soon */}
         <About />
         <Contact />
       </div>

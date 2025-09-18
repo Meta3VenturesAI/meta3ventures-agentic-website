@@ -76,7 +76,8 @@ export const Header: React.FC = () => {
     { path: '/portfolio', label: 'Portfolio' },
     { path: '/partners', label: 'Partners' },
     { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/contact', label: 'Contact' },
+    { path: '#', label: 'Virtual Agents (Coming Soon)', disabled: true }
   ];
 
   return (
@@ -100,16 +101,25 @@ export const Header: React.FC = () => {
         
         <nav className="hidden md:flex items-center space-x-8">
           {menuItems.map((item) => (
-            <Link 
-              key={item.path}
-              to={item.path}
-              className={`text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium ${
-                isActivePath(item.path) ? 'text-indigo-600 dark:text-indigo-400' : ''
-              }`}
-              onClick={() => handleNavigation(item.path)}
-            >
-              {item.label}
-            </Link>
+            item.disabled ? (
+              <span 
+                key={item.path}
+                className="text-gray-400 dark:text-gray-500 cursor-not-allowed font-medium"
+              >
+                {item.label}
+              </span>
+            ) : (
+              <Link 
+                key={item.path}
+                to={item.path}
+                className={`text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium ${
+                  isActivePath(item.path) ? 'text-indigo-600 dark:text-indigo-400' : ''
+                }`}
+                onClick={() => handleNavigation(item.path)}
+              >
+                {item.label}
+              </Link>
+            )
           ))}
           <Link 
             to="/apply"
@@ -174,16 +184,25 @@ export const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg py-4 px-6 flex flex-col space-y-4 animate-fadeIn z-40">
           {menuItems.map((item) => (
-            <Link 
-              key={item.path}
-              to={item.path}
-              className={`text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-2 font-medium ${
-                isActivePath(item.path) ? 'text-indigo-600 dark:text-indigo-400' : ''
-              }`}
-              onClick={() => handleNavigation(item.path)}
-            >
-              {item.label}
-            </Link>
+            item.disabled ? (
+              <span 
+                key={item.path}
+                className="text-gray-400 dark:text-gray-500 cursor-not-allowed py-2 font-medium"
+              >
+                {item.label}
+              </span>
+            ) : (
+              <Link 
+                key={item.path}
+                to={item.path}
+                className={`text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-2 font-medium ${
+                  isActivePath(item.path) ? 'text-indigo-600 dark:text-indigo-400' : ''
+                }`}
+                onClick={() => handleNavigation(item.path)}
+              >
+                {item.label}
+              </Link>
+            )
           ))}
           <Link 
             to="/apply"
