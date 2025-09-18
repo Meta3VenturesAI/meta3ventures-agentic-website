@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   X, Send, Minimize2, Maximize2, TrendingUp,
-  DollarSign, FileText, Users, BarChart, Shield,
-  Briefcase, Award, Calendar, CheckCircle, AlertCircle,
+  DollarSign, FileText, Users, Shield,
+  Briefcase, Award, CheckCircle, AlertCircle,
   FileCheck, PresentationIcon, Calculator, Globe, Zap,
   ChevronRight, Download, ExternalLink, Info
 } from 'lucide-react';

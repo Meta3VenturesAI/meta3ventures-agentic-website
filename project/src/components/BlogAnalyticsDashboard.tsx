@@ -58,6 +58,34 @@ export const BlogAnalyticsDashboard: React.FC = () => {
       setStats(blogStats);
       
       // Generate mock time-series data
+      const generateTimeSeriesData = () => {
+        const days = timeRange === '7d' ? 7 : timeRange === '30d' ? 30 : timeRange === '90d' ? 90 : 365;
+        return Array.from({ length: Math.min(days, 30) }, (_, i) => {
+          const date = new Date();
+          date.setDate(date.getDate() - i);
+          return {
+            date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+            views: Math.floor(Math.random() * 1000) + 500,
+            visitors: Math.floor(Math.random() * 500) + 200,
+          };
+        }).reverse();
+      };
+
+      const generateEngagementData = () => [
+        { name: 'Likes', value: 2345, color: '#EF4444' },
+        { name: 'Shares', value: 1234, color: '#3B82F6' },
+        { name: 'Comments', value: 567, color: '#10B981' },
+        { name: 'Saves', value: 890, color: '#F59E0B' },
+      ];
+
+      const generateCategoryData = () => [
+        { category: 'AI Insights', posts: 45, views: 12500 },
+        { category: 'Investment', posts: 32, views: 8900 },
+        { category: 'Portfolio', posts: 28, views: 7600 },
+        { category: 'Industry', posts: 21, views: 5400 },
+        { category: 'Thought Leadership', posts: 18, views: 4200 },
+      ];
+      
       setViewsData(generateTimeSeriesData());
       setEngagementData(generateEngagementData());
       setCategoryData(generateCategoryData());
@@ -66,35 +94,8 @@ export const BlogAnalyticsDashboard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [generateTimeSeriesData, generateEngagementData, generateCategoryData]);
+  }, [timeRange]);
 
-  const generateTimeSeriesData = () => {
-    const days = timeRange === '7d' ? 7 : timeRange === '30d' ? 30 : timeRange === '90d' ? 90 : 365;
-    return Array.from({ length: Math.min(days, 30) }, (_, i) => {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      return {
-        date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-        views: Math.floor(Math.random() * 1000) + 500,
-        visitors: Math.floor(Math.random() * 500) + 200,
-      };
-    }).reverse();
-  };
-
-  const generateEngagementData = () => [
-    { name: 'Likes', value: 2345, color: '#EF4444' },
-    { name: 'Shares', value: 1234, color: '#3B82F6' },
-    { name: 'Comments', value: 567, color: '#10B981' },
-    { name: 'Saves', value: 890, color: '#F59E0B' },
-  ];
-
-  const generateCategoryData = () => [
-    { category: 'AI Insights', posts: 45, views: 12500 },
-    { category: 'Investment', posts: 32, views: 8900 },
-    { category: 'Portfolio', posts: 28, views: 7600 },
-    { category: 'Industry', posts: 21, views: 5400 },
-    { category: 'Thought Leadership', posts: 18, views: 4200 },
-  ];
 
   if (loading) {
     return (
