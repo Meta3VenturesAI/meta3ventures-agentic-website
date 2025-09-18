@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   X, Send, Minimize2, Maximize2, TrendingUp,
   DollarSign, FileText, Users, Shield,
-  Briefcase, Award, CheckCircle, AlertCircle,
-  FileCheck, PresentationIcon, Calculator, Globe, Zap,
-  ChevronRight, Download, ExternalLink, Info
+  Briefcase, Award, CheckCircle,
+  FileCheck, PresentationIcon, Calculator, Zap,
+  ExternalLink, Info
 } from 'lucide-react';
 import { dataStorage } from '../services/data-storage.service';
 import { adminAgentOrchestrator } from '../services/agents/refactored/AdminAgentOrchestrator';
@@ -51,7 +51,7 @@ interface FundraisingContext {
   sessionId: string;
 }
 
-interface FundraisingStage {
+interface _FundraisingStage {
   id: string;
   name: string;
   description: string;
